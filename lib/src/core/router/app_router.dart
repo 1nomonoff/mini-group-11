@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:mini_group_11/src/features/personal_account/presentation/screens/personal_account_page.dart';
 
 class AppRouter {
   static Route<dynamic>? onGenerateRoute(RouteSettings settings){
     switch (settings.name) {
-      case '/':
-        return customRouter(SizedBox());
+      case '/personal_account':
+        return customRouter(PersonalAccountPage());
         //break;
       default:
     }
