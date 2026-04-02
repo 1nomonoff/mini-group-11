@@ -1,7 +1,6 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:mini_group_11/src/core/consts/colors/app_colors.dart';
 import 'package:mini_group_11/src/core/consts/theme/app_theme.dart';
 import 'package:mini_group_11/src/core/router/app_router.dart';
 
