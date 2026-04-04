@@ -23,6 +23,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/call.svg
   String get call => 'assets/icons/call.svg';
 
+  /// File path: assets/icons/cancel.svg
+  String get cancel => 'assets/icons/cancel.svg';
+
   /// File path: assets/icons/cart.svg
   String get cart => 'assets/icons/cart.svg';
 
@@ -133,6 +136,7 @@ class $AssetsIconsGen {
     addprofile,
     attention,
     call,
+    cancel,
     cart,
     cart1,
     categorymenu,

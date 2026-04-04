@@ -4,17 +4,16 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mini_group_11/src/core/consts/colors/app_colors.dart';
 
 class PAContainer extends StatelessWidget {
-  const PAContainer({super.key, required this.svg, required this.text});
+  const PAContainer({super.key, required this.svg, required this.text, required this.onTap});
 
   final String svg;
   final String text;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        
-      },
+      onTap: onTap,
       child: Container(
         width: 157,
         height: 133,
