@@ -3,6 +3,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mini_group_11/src/core/consts/colors/app_colors.dart';
 import 'package:mini_group_11/src/core/consts/gen/assets.gen.dart';
+import 'package:mini_group_11/src/core/utils/text_style_extension.dart';
+import 'package:mini_group_11/src/features/personal_account/presentation/widgets/info_bottom_sheet.dart';
 import 'package:mini_group_11/src/features/personal_account/presentation/widgets/orders_container.dart';
 import 'package:mini_group_11/src/features/personal_account/presentation/widgets/pa_container.dart';
 
@@ -232,12 +234,58 @@ class PersonalAccountPage extends StatelessWidget {
                   SizedBox(height: 18),
                   Divider(color: AppColors.white3, height: 1),
                   SizedBox(height: 10),
-                  Text(
-                    'Информация',
-                    style: GoogleFonts.roboto(
-                      color: AppColors.darkgrey,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 17,
+                  Container(
+                    padding: EdgeInsets.fromLTRB(0, 10, 5, 10),
+                    decoration: BoxDecoration(
+                      border: Border.symmetric(
+                        vertical: BorderSide(width: 1, color: AppColors.white3),
+                      ),
+                    ),
+                    child: ExpansionTile(
+                      title: Text(
+                        'Информация',
+                        style: context.titleMedium.copyWith(
+                          color: AppColors.darkgrey,
+                          fontSize: 17,
+                        ),
+                      ),
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 8,
+                          ),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text('О компании'),
+                                    Text('Доставка'),
+                                    Text('Отзывы'),
+                                    Text('Новости'),
+                                    Text('Вход \\ Регистрация'),
+                                  ],
+                                ),
+                              ),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text('Оплата'),
+                                    Text('Возврат'),
+                                    Text('Вопрос-ответ'),
+                                    Text('Контакты'),
+                                    Text('Все акции'),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   SizedBox(height: 10),
