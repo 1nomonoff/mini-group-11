@@ -16,6 +16,7 @@ class AppColors {
   static final Color grey = Color(0XFF91969D);
   static final Color grey1 = Color(0XFF4E5760);
   static final Color grey2 = Color(0XFF474B4E);
+  static final Color grey3 = Color(0XFF6B6F73);
   static final Color darkgrey = Color(0XFF2C333D);
   static final Color orange = Color(0XFFFF9900);
   static final Color orange1 = Color(0XFFFB5A00);

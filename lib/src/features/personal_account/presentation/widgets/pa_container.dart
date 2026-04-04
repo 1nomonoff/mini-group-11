@@ -16,7 +16,7 @@ class PAContainer extends StatelessWidget {
         
       },
       child: Container(
-        width: 158,
+        width: 157,
         height: 133,
         decoration: BoxDecoration(
           color: AppColors.white,
