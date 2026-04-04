@@ -30,6 +30,7 @@ class PADrawerItem extends StatelessWidget {
         Navigator.pop(context);
       },
       child: Container(
+        height: 75,
         padding: EdgeInsets.symmetric(horizontal: 30, vertical: 26),
         decoration: BoxDecoration(
           color: isSelected ? AppColors.black1 : Colors.transparent,
@@ -41,6 +42,8 @@ class PADrawerItem extends StatelessWidget {
           children: [
             SvgPicture.asset(
               svg,
+              width: 23,
+              height: 23,
               colorFilter: ColorFilter.mode(
                 isSelected ? AppColors.white : AppColors.darkgrey,
                 BlendMode.srcIn,
