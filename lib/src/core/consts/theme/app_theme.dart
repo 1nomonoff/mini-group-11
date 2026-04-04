@@ -8,7 +8,7 @@ class AppTheme {
       displayLarge: GoogleFonts.roboto(
         fontSize: 48,
         fontWeight: FontWeight.w400,
-        color: AppColors.white,
+        color: AppColors.black,
       ),
       displayMedium: GoogleFonts.roboto(
         fontSize: 45,
