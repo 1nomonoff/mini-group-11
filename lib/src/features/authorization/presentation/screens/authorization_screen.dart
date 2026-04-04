@@ -1,0 +1,208 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class AuthorizationScreen extends StatefulWidget {
+  AuthorizationScreen({super.key});
+
+  @override
+  State<AuthorizationScreen> createState() => _AuthorizationScreenState();
+}
+
+class _AuthorizationScreenState extends State<AuthorizationScreen> {
+  bool isOn = false;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading: Image.asset('assets/images/logo.png'),
+        actions: [
+          SvgPicture.asset('assets/icons/profile.svg'),
+          SizedBox(width: 6),
+          SvgPicture.asset('assets/icons/trading.svg'),
+          SizedBox(width: 6),
+          SvgPicture.asset('assets/icons/like.svg'),
+          SizedBox(width: 6),
+          SvgPicture.asset('assets/icons/cart1.svg'),
+        ],
+      ),
+      body: Padding(
+        padding: EdgeInsets.only(left: 15, right: 15),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Text(
+                  'Стройоптторг',
+                  style: TextStyle(fontSize: 16, color: Colors.grey[700]),
+                ),
+                Text(' / ', style: TextStyle(color: Colors.grey)),
+                Text(
+                  'Авторизация',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                ),
+              ],
+            ),
+            SizedBox(height: 32),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  'Email или логин *:',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                ),
+              ],
+            ),
+            SizedBox(height: 8),
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'Введите данные для авторизации',
+                hintStyle: TextStyle(color: Colors.grey[400]),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(color: Colors.grey[300]!),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(color: Colors.grey[300]!),
+                ),
+                contentPadding: EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 14,
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  'Пароль *:',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                ),
+              ],
+            ),
+            SizedBox(height: 8),
+            TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                hintText: 'Введите пароль',
+                suffixIcon: IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.visibility_off),
+                  color: Colors.grey[400],
+                ),
+                hintStyle: TextStyle(color: Colors.grey[400]),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(color: Colors.grey[300]!),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(color: Colors.grey[300]!),
+                ),
+                contentPadding: EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 14,
+                ),
+              ),
+            ),
+            SizedBox(height: 12),
+            Align(
+              alignment: Alignment.center,
+              child: TextButton(
+                onPressed: () {},
+                child: Text(
+                  'Восстановить пароль',
+                  style: TextStyle(color: Colors.blue, fontSize: 14),
+                ),
+              ),
+            ),
+            SizedBox(height: 24),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue,
+                  foregroundColor: Colors.white,
+                  padding: EdgeInsets.symmetric(vertical: 14),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                child: Text(
+                  'АВТОРИЗОВАТЬСЯ',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                ),
+              ),
+            ),
+            SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Checkbox(
+                  value: isOn,
+                  onChanged: (value) {
+                    setState(() {
+                      isOn = value!;
+                    });
+                  },
+                  activeColor: Colors.blue,
+                  side: BorderSide(color: Colors.grey[400]!),
+                ),
+                Text('Запомнить меня', style: TextStyle(fontSize: 14)),
+              ],
+            ),
+            SizedBox(height: 24),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SvgPicture.asset('assets/icons/addprofile.svg'),
+                Text(
+                  'Еще нет аккаунта?',
+                  style: GoogleFonts.poppins(color: Colors.black, fontSize: 14),
+                ),
+              ],
+            ),
+            SizedBox(height: 24),
+            Text(
+              'Регистрация на сайте позволяет получить доступ к статусу и истории вашего заказа. Просто заполните поля ниже, и вы получите учетную запись.',
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.grey[700],
+                height: 1.4,
+              ),
+            ),
+            SizedBox(height: 16),
+            Text(
+              'Мы запрашиваем у вас только информацию, необходимую для того, чтобы сделать процесс покупки более быстрым и легким.',
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.grey[700],
+                height: 1.4,
+              ),
+            ),
+            SizedBox(height: 24),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                minimumSize: Size(double.infinity, 48),
+                foregroundColor: Colors.white,
+                backgroundColor: Color(0xff011120),
+                padding: EdgeInsets.symmetric(vertical: 14),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+              child: Text(
+                'ЗАРЕГИСТРИРОВАТЬСЯ   >',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

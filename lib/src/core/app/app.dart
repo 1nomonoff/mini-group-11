@@ -13,8 +13,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Mini-Group-11',
       theme: AppTheme.light,
+      debugShowCheckedModeBanner: false,
       onGenerateRoute: AppRouter.onGenerateRoute,
-      initialRoute: '',
+      initialRoute: '/authorization',
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
