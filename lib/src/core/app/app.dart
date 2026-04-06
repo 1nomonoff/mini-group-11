@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.light,
       debugShowCheckedModeBanner: false,
       onGenerateRoute: AppRouter.onGenerateRoute,
-      initialRoute: '/authorization',
+      initialRoute: '/screen',
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
