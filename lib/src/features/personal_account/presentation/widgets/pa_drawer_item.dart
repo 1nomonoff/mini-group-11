@@ -45,7 +45,7 @@ class PADrawerItem extends StatelessWidget {
               width: 23,
               height: 23,
               colorFilter: ColorFilter.mode(
-                isSelected ? AppColors.white : AppColors.darkgrey,
+                isSelected ? AppColors.white : AppColors.grey,
                 BlendMode.srcIn,
               ),
             ),
@@ -66,12 +66,14 @@ class PADrawerItem extends StatelessWidget {
                   color: AppColors.red1,
                   shape: BoxShape.circle,
                 ),
-                child: Text(
-                  '$badge',
-                  style: context.labelSmall.copyWith(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w700,
-                    color: AppColors.white,
+                child: Center(
+                  child: Text(
+                    '$badge',
+                    style: context.labelSmall.copyWith(
+                      fontSize: 10,
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.white,
+                    ),
                   ),
                 ),
               ),

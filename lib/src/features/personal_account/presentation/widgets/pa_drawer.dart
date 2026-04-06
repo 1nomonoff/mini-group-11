@@ -17,7 +17,7 @@ class PADrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Drawer(
+    return Drawer(width: MediaQuery.widthOf(context) * 0.9,
       child: SafeArea(
         child: Column(
           children: [
@@ -39,11 +39,12 @@ class PADrawer extends StatelessWidget {
                     child: Container(
                       width: 26,
                       height: 26,
+                      padding: EdgeInsets.all(9.5),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(4.0),
                         color: AppColors.white2,
                       ),
-                      child: SvgPicture.asset(Assets.icons.cancel),
+                      child: SvgPicture.asset(Assets.icons.cancel,),
                     ),
                   ),
                 ],

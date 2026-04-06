@@ -1,31 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mini_group_11/src/core/consts/colors/app_colors.dart';
-import 'package:mini_group_11/src/core/consts/gen/assets.gen.dart';
+import 'package:mini_group_11/src/core/utils/text_style_extension.dart';
 
-class Mainbutton extends StatelessWidget {
-  final String icon;
+class BlueButtonWidget extends StatelessWidget {
+  final Icon? icon;
   final String title;
-  const Mainbutton({super.key, required this.icon, required this.title});
+  final VoidCallback onTap;
+  const BlueButtonWidget({super.key, this.icon, required this.title, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton.icon(
-      onPressed: () {},
-      icon: Text(icon),
-      label: Text(
-        title,
-        style: TextStyle(
-          fontSize: 12,
-          fontWeight: FontWeight.w700,
-          color: AppColors.white,
-        ),
-      ),
+    return ElevatedButton(
+      onPressed: onTap,
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.primaryblue,
         foregroundColor: AppColors.white,
         minimumSize: Size(120, 40),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        padding: EdgeInsets.symmetric(horizontal: 32, vertical: 25),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+      ),
+      child: Text(
+        title,
+        style: context.titleMedium.copyWith(
+          color: AppColors.white,
+          fontWeight: FontWeight.w700,
+          fontSize: 13,
+        ),
       ),
     );
   }

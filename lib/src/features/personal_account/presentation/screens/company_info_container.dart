@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mini_group_11/src/core/consts/colors/app_colors.dart';
 import 'package:mini_group_11/src/core/consts/gen/assets.gen.dart';
-import 'package:mini_group_11/src/core/utils/email_validator.dart';
+import 'package:mini_group_11/src/core/utils/auth_validators.dart';
 import 'package:mini_group_11/src/core/utils/text_style_extension.dart';
 import 'package:mini_group_11/src/features/personal_account/presentation/widgets/info_expansion.dart';
 import 'package:mini_group_11/src/features/personal_account/presentation/widgets/info_expansion_text.dart';
@@ -310,7 +310,7 @@ class _CompanyInfoContainerState extends State<CompanyInfoContainer> {
           Form(
             key: _formKey,
             child: TextFormField(
-              validator: EmailValidator.emailValidator,
+              validator: AuthValidators.emailValidator,
               controller: _emailController,
               decoration: InputDecoration(
                 hintText: 'Ваш email',
@@ -341,7 +341,11 @@ class _CompanyInfoContainerState extends State<CompanyInfoContainer> {
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8.0),
-                  borderSide: BorderSide(color: AppColors.white),
+                  borderSide: BorderSide(color: AppColors.blue),
+                ),
+                errorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                  borderSide: BorderSide(color: AppColors.red2),
                 ),
               ),
             ),

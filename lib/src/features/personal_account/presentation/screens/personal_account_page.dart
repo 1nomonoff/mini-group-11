@@ -4,8 +4,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mini_group_11/src/core/consts/colors/app_colors.dart';
 import 'package:mini_group_11/src/core/consts/gen/assets.gen.dart';
 import 'package:mini_group_11/src/core/utils/text_style_extension.dart';
-import 'package:mini_group_11/src/features/personal_account/presentation/widgets/company_info_container.dart';
-import 'package:mini_group_11/src/features/personal_account/presentation/widgets/my_orders_page.dart';
+import 'package:mini_group_11/src/features/personal_account/presentation/screens/company_info_container.dart';
+import 'package:mini_group_11/src/features/personal_account/presentation/screens/edit_profile_page.dart';
+import 'package:mini_group_11/src/features/personal_account/presentation/screens/my_address_page.dart';
+import 'package:mini_group_11/src/features/personal_account/presentation/screens/my_orders_page.dart';
 import 'package:mini_group_11/src/features/personal_account/presentation/widgets/orders_container.dart';
 import 'package:mini_group_11/src/features/personal_account/presentation/widgets/pa_container.dart';
 import 'package:mini_group_11/src/features/personal_account/presentation/widgets/pa_drawer.dart';
@@ -32,21 +34,24 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            SizedBox(height: 182, child: Text('HOME')),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+              padding: const EdgeInsets.only(left: 15, right: 15, top: 12),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 182, child: Text('HOME')),
                   Row(
                     spacing: 10,
                     children: [
-                      Text(
-                        'Стройоптторг',
-                        style: GoogleFonts.roboto(
-                          color: AppColors.darkgrey,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 13,
+                      InkWell(
+                        onTap: () {},
+                        child: Text(
+                          'Стройоптторг',
+                          style: GoogleFonts.roboto(
+                            color: AppColors.darkgrey,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 13,
+                          ),
                         ),
                       ),
                       Text(
@@ -57,12 +62,17 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                           fontSize: 13,
                         ),
                       ),
-                      Text(
-                        'Личный кабинет',
-                        style: GoogleFonts.roboto(
-                          color: AppColors.grey,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 13,
+                      InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(context, '/personal_account');
+                        },
+                        child: Text(
+                          'Личный кабинет',
+                          style: GoogleFonts.roboto(
+                            color: AppColors.grey,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 13,
+                          ),
                         ),
                       ),
                     ],
@@ -76,40 +86,47 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                       fontSize: 30,
                     ),
                   ),
-                  SizedBox(height: 20),
-
-                  if (_selectedIndex != null)
-                    InkWell(
-                      onTap: () => _scaffoldKey.currentState!.openDrawer(),
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 10,
-                          vertical: 21,
-                        ),
-                        decoration: BoxDecoration(
-                          border: Border.symmetric(
-                            vertical: BorderSide(
-                              width: 1,
-                              color: AppColors.borderColor,
-                            ),
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SvgPicture.asset(Assets.icons.menu1),
-                            SizedBox(width: 10),
-                            Text(
-                              'Меню профиля',
-                              style: context.bodyLarge.copyWith(
-                                color: AppColors.darkgrey,
-                              ),
-                            ),
-                          ],
+                ],
+              ),
+            ),
+            SizedBox(height: 20),
+            if (_selectedIndex != null)
+              InkWell(
+                onTap: () => _scaffoldKey.currentState!.openDrawer(),
+                child: Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 21,
+                  ),
+                  decoration: BoxDecoration(
+                    border: Border.symmetric(
+                      horizontal: BorderSide(
+                        width: 1,
+                        color: AppColors.borderColor,
+                      ),
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset(Assets.icons.menu1),
+                      SizedBox(width: 10),
+                      Text(
+                        'Меню профиля',
+                        style: context.bodyLarge.copyWith(
+                          color: AppColors.darkgrey,
                         ),
                       ),
-                    )
-                  else ...[
+                    ],
+                  ),
+                ),
+              )
+            else ...[
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
                     Text(
                       'Здравствуйте, Евгений',
                       style: GoogleFonts.roboto(
@@ -208,21 +225,18 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                     SizedBox(height: 15),
                     OrdersContainer(text: 'ОТМЕНЕН', color: AppColors.red2),
                   ],
-
-                  if (_selectedIndex == 0)
-                    const MyOrdersPage()
-                  else if (_selectedIndex == 1)
-                    const SizedBox() // EditProfileWidget()
-                  else if (_selectedIndex == 2)
-                    const SizedBox() // DeliveryAddressWidget()
-                  else if (_selectedIndex == 3)
-                    const SizedBox() // FavoritesWidget()
-                  else if (_selectedIndex == 4)
-                    const SizedBox(), // ChangePasswordWidget()
-                ],
+                ),
               ),
-            ),
-            SizedBox(height: 68),
+            ],                        
+            if (_selectedIndex == 0)
+              const MyOrdersPage()
+            else if (_selectedIndex == 1)
+              const EditProfilePage()
+            else if (_selectedIndex == 2)
+              const MyAddressPage()
+            else if (_selectedIndex == 3)
+              const SizedBox(),
+            SizedBox(height: 80),
             CompanyInfoContainer(),
           ],
         ),

@@ -1,4 +1,4 @@
-class EmailValidator {
+class AuthValidators {
   static String? emailValidator(String? content) {
     if (content == null || content.isEmpty) {
       return 'enter your email';
@@ -7,6 +7,15 @@ class EmailValidator {
         ).hasMatch(content) ==
         false) {
       return "enter right email [@, gmail.com]";
+    }
+    return null;
+  }
+
+  static String? passwordValidator(String? content) {
+    if (content == null || content.isEmpty) {
+      return 'enter your password';
+    } else if (content.length < 8) {
+      return 'password should be at least 8 characters!';
     }
     return null;
   }
