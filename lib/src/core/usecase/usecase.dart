@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:equatable/equatable.dart';
 import 'package:mini_group_11/src/core/either/either.dart';
 import 'package:mini_group_11/src/core/failure/failure.dart';
