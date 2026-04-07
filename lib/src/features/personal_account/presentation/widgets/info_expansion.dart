@@ -19,11 +19,11 @@ class InfoExpansion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 330,
       decoration: BoxDecoration(
         border: Border(bottom: BorderSide(color: AppColors.white3, width: 1)),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           InkWell(
             onTap: onTap,

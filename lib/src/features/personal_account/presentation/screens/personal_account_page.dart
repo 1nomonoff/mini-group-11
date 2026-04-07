@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mini_group_11/src/core/consts/colors/app_colors.dart';
 import 'package:mini_group_11/src/core/consts/gen/assets.gen.dart';
 import 'package:mini_group_11/src/core/utils/text_style_extension.dart';
+import 'package:mini_group_11/src/features/personal_account/presentation/screens/change_password_page.dart';
 import 'package:mini_group_11/src/features/personal_account/presentation/screens/company_info_container.dart';
 import 'package:mini_group_11/src/features/personal_account/presentation/screens/edit_profile_page.dart';
 import 'package:mini_group_11/src/features/personal_account/presentation/screens/my_address_page.dart';
@@ -32,213 +33,215 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
         onSelect: (index) => setState(() => _selectedIndex = index),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: 182, child: Text('HOME')),
-            Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15, top: 12),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    spacing: 10,
-                    children: [
-                      InkWell(
-                        onTap: () {},
-                        child: Text(
-                          'Стройоптторг',
-                          style: GoogleFonts.roboto(
-                            color: AppColors.darkgrey,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 13,
+        child: SafeArea(
+          child: Column(
+            children: [
+              SizedBox(height: 182, child: Text('HOME')),
+              Padding(
+                padding: const EdgeInsets.only(left: 15, right: 15, top: 12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      spacing: 10,
+                      children: [
+                        InkWell(
+                          onTap: () {},
+                          child: Text(
+                            'Стройоптторг',
+                            style: GoogleFonts.roboto(
+                              color: AppColors.darkgrey,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 13,
+                            ),
                           ),
                         ),
-                      ),
-                      Text(
-                        '/',
-                        style: GoogleFonts.roboto(
-                          color: AppColors.grey,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 13,
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.pushNamed(context, '/personal_account');
-                        },
-                        child: Text(
-                          'Личный кабинет',
+                        Text(
+                          '/',
                           style: GoogleFonts.roboto(
                             color: AppColors.grey,
                             fontWeight: FontWeight.w400,
                             fontSize: 13,
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 32),
-                  Text(
-                    'Личный кабинет',
-                    style: GoogleFonts.roboto(
-                      color: AppColors.darkgrey,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 30,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 20),
-            if (_selectedIndex != null)
-              InkWell(
-                onTap: () => _scaffoldKey.currentState!.openDrawer(),
-                child: Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 10,
-                    vertical: 21,
-                  ),
-                  decoration: BoxDecoration(
-                    border: Border.symmetric(
-                      horizontal: BorderSide(
-                        width: 1,
-                        color: AppColors.borderColor,
-                      ),
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SvgPicture.asset(Assets.icons.menu1),
-                      SizedBox(width: 10),
-                      Text(
-                        'Меню профиля',
-                        style: context.bodyLarge.copyWith(
-                          color: AppColors.darkgrey,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              )
-            else ...[
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Здравствуйте, Евгений',
-                      style: GoogleFonts.roboto(
-                        color: AppColors.darkgrey,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 20,
-                      ),
-                    ),
-                    SizedBox(height: 15),
-                    Row(
-                      children: [
                         InkWell(
-                          onTap: () => setState(() => _selectedIndex = 0),
-                          child: Container(
-                            width: 158,
-                            height: 133,
-                            decoration: BoxDecoration(
-                              color: AppColors.blue,
-                              borderRadius: BorderRadius.circular(5.0),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                SvgPicture.asset(Assets.icons.categorymenu),
-                                Text(
-                                  'МОИ ЗАКАЗЫ',
-                                  style: GoogleFonts.roboto(
-                                    color: AppColors.white,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 13,
-                                  ),
-                                ),
-                              ],
+                          onTap: () {
+                            Navigator.pushNamed(context, '/personal_account');
+                          },
+                          child: Text(
+                            'Личный кабинет',
+                            style: GoogleFonts.roboto(
+                              color: AppColors.grey,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 13,
                             ),
                           ),
                         ),
-                        SizedBox(width: 15),
-                        PAContainer(
-                          svg: Assets.icons.editprofile,
-                          text: 'ИЗМЕНИТЬ ПРОФИЛЬ',
-                          onTap: () => setState(() => _selectedIndex = 1),
-                        ),
                       ],
                     ),
-                    SizedBox(height: 15),
-                    Row(
-                      children: [
-                        PAContainer(
-                          svg: Assets.icons.share,
-                          text: 'АДРЕС ДОСТАВКИ',
-                          onTap: () => setState(() => _selectedIndex = 2),
-                        ),
-                        SizedBox(width: 15),
-                        PAContainer(
-                          svg: Assets.icons.like1,
-                          text: 'ИЗБРАННОЕ',
-                          onTap: () => setState(() => _selectedIndex = 3),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 15),
-                    Row(
-                      children: [
-                        PAContainer(
-                          svg: Assets.icons.parol,
-                          text: 'СМЕНИТЬ ПАРОЛЬ',
-                          onTap: () => setState(() => _selectedIndex = 4),
-                        ),
-                        SizedBox(width: 15),
-                        PAContainer(
-                          svg: Assets.icons.logout,
-                          text: 'ВЫЙТИ',
-                          onTap: () => setState(() => _selectedIndex = 5),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 30),
+                    SizedBox(height: 32),
                     Text(
-                      'Текущие заказы',
+                      'Личный кабинет',
                       style: GoogleFonts.roboto(
                         color: AppColors.darkgrey,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 30,
                       ),
                     ),
-                    SizedBox(height: 10),
-                    OrdersContainer(
-                      text: 'ОБРАБОТКА',
-                      color: AppColors.orange1,
-                    ),
-                    SizedBox(height: 15),
-                    OrdersContainer(
-                      text: 'ВЫПОЛНЕН',
-                      color: AppColors.darkgreen,
-                    ),
-                    SizedBox(height: 15),
-                    OrdersContainer(text: 'ОТМЕНЕН', color: AppColors.red2),
                   ],
                 ),
               ),
-            ],                        
-            if (_selectedIndex == 0)
-              const MyOrdersPage()
-            else if (_selectedIndex == 1)
-              const EditProfilePage()
-            else if (_selectedIndex == 2)
-              const MyAddressPage()
-            else if (_selectedIndex == 3)
-              const SizedBox(),
-            SizedBox(height: 80),
-            CompanyInfoContainer(),
-          ],
+              SizedBox(height: 20),
+              if (_selectedIndex != null)
+                InkWell(
+                  onTap: () => _scaffoldKey.currentState!.openDrawer(),
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 21),
+                    decoration: BoxDecoration(
+                      border: Border.symmetric(
+                        horizontal: BorderSide(
+                          width: 1,
+                          color: AppColors.borderColor,
+                        ),
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(Assets.icons.menu1),
+                        SizedBox(width: 10),
+                        Text(
+                          'Меню профиля',
+                          style: context.bodyLarge.copyWith(
+                            color: AppColors.darkgrey,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              else ...[
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Здравствуйте, Евгений',
+                        style: GoogleFonts.roboto(
+                          color: AppColors.darkgrey,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 20,
+                        ),
+                      ),
+                      SizedBox(height: 15),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          InkWell(
+                            onTap: () => setState(() => _selectedIndex = 0),
+                            child: Container(
+                              width: 158,
+                              height: 133,
+                              decoration: BoxDecoration(
+                                color: AppColors.blue,
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  SvgPicture.asset(Assets.icons.categorymenu),
+                                  Text(
+                                    'МОИ ЗАКАЗЫ',
+                                    style: GoogleFonts.roboto(
+                                      color: AppColors.white,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 13,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          PAContainer(
+                            svg: Assets.icons.editprofile,
+                            text: 'ИЗМЕНИТЬ ПРОФИЛЬ',
+                            onTap: () => setState(() => _selectedIndex = 1),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 15),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          PAContainer(
+                            svg: Assets.icons.share,
+                            text: 'АДРЕС ДОСТАВКИ',
+                            onTap: () => setState(() => _selectedIndex = 2),
+                          ),
+                          PAContainer(
+                            svg: Assets.icons.like1,
+                            text: 'ИЗБРАННОЕ',
+                            onTap: () => setState(() => _selectedIndex = 3),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 15),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          PAContainer(
+                            svg: Assets.icons.parol,
+                            text: 'СМЕНИТЬ ПАРОЛЬ',
+                            onTap: () => setState(() => _selectedIndex = 4),
+                          ),
+                          PAContainer(
+                            svg: Assets.icons.logout,
+                            text: 'ВЫЙТИ',
+                            onTap: () => setState(() => _selectedIndex = 5),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 30),
+                      Text(
+                        'Текущие заказы',
+                        style: GoogleFonts.roboto(
+                          color: AppColors.darkgrey,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 20,
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      OrdersContainer(
+                        text: 'ОБРАБОТКА',
+                        color: AppColors.orange1,
+                      ),
+                      SizedBox(height: 15),
+                      OrdersContainer(
+                        text: 'ВЫПОЛНЕН',
+                        color: AppColors.darkgreen,
+                      ),
+                      SizedBox(height: 15),
+                      OrdersContainer(text: 'ОТМЕНЕН', color: AppColors.red2),
+                    ],
+                  ),
+                ),
+              ],
+              if (_selectedIndex == 0)
+                const MyOrdersPage()
+              else if (_selectedIndex == 1)
+                const EditProfilePage()
+              else if (_selectedIndex == 2)
+                const MyAddressPage()
+              else if (_selectedIndex == 3)
+                const SizedBox()
+              else if (_selectedIndex == 4)
+                const ChangePasswordPage(),
+              SizedBox(height: 80),
+              CompanyInfoContainer(),
+            ],
+          ),
         ),
       ),
     );

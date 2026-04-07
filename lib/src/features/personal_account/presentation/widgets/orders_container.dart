@@ -11,7 +11,6 @@ class OrdersContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 320,
       height: 214,
       padding: EdgeInsets.all(15.0),
       decoration: BoxDecoration(
@@ -128,7 +127,7 @@ class OrdersContainer extends StatelessWidget {
           ElevatedButton(
             onPressed: () {},
             style: ElevatedButton.styleFrom(
-              fixedSize: Size(290, 42),
+              fixedSize: Size(double.maxFinite, 42),
               backgroundColor: AppColors.white2,
               foregroundColor: AppColors.blue5,
               shape: RoundedRectangleBorder(

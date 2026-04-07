@@ -15,7 +15,7 @@ class PAContainer extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        width: 157,
+        width: 158,
         height: 133,
         decoration: BoxDecoration(
           color: AppColors.white,

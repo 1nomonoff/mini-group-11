@@ -26,7 +26,7 @@ class _CompanyInfoContainerState extends State<CompanyInfoContainer> {
     super.dispose();
     _emailController.dispose();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,82 +35,88 @@ class _CompanyInfoContainerState extends State<CompanyInfoContainer> {
       child: Column(
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Image.asset(
-                Assets.images.logo.path,
-                width: 159,
-                height: 40,
-                fit: BoxFit.cover,
-              ),
-              SizedBox(width: 20),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Email:',
-                    style: GoogleFonts.roboto(
-                      color: AppColors.black4,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 13,
-                    ),
+                  Image.asset(
+                    Assets.images.logo.path,
+                    width: 160,
+                    height: 40,
+                    fit: BoxFit.cover,
                   ),
-                  Text(
-                    'info@stroiopttorg.ru',
-                    style: GoogleFonts.roboto(
-                      color: AppColors.blue5,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 14,
-                      decoration: TextDecoration.underline,
-                      decorationColor: AppColors.blue5,
-                    ),
+                  SizedBox(height: 18),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        '8 800 444 00 65',
+                        style: GoogleFonts.roboto(
+                          color: AppColors.black,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18,
+                        ),
+                      ),
+                      Text(
+                        'Ежедневно, с 8:00 до 18:00',
+                        style: GoogleFonts.roboto(
+                          color: AppColors.grey1,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 13,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
-            ],
-          ),
-          SizedBox(height: 18),
-          Row(
-            children: [
               Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    '8 800 444 00 65',
-                    style: GoogleFonts.roboto(
-                      color: AppColors.black,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 18,
-                    ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Email:',
+                        style: GoogleFonts.roboto(
+                          color: AppColors.black4,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 13,
+                        ),
+                      ),
+                      Text(
+                        'info@stroiopttorg.ru',
+                        style: GoogleFonts.roboto(
+                          color: AppColors.blue5,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
+                          decoration: TextDecoration.underline,
+                          decorationColor: AppColors.blue5,
+                        ),
+                      ),
+                    ],
                   ),
-                  Text(
-                    'Ежедневно, с 8:00 до 18:00',
-                    style: GoogleFonts.roboto(
-                      color: AppColors.grey1,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 13,
+                  SizedBox(height: 18),
+                  OutlinedButton(
+                    onPressed: () {},
+                    style: OutlinedButton.styleFrom(
+                      side: BorderSide(color: AppColors.red1, width: 1),
+                      fixedSize: Size(149, 44),
+                      padding: EdgeInsets.symmetric(horizontal: 15),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadiusGeometry.circular(4.0),
+                      ),
+                    ),
+                    child: Text(
+                      'ЗАКАЗАТЬ ЗВОНОК',
+                      style: GoogleFonts.roboto(
+                        color: AppColors.grey2,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 11,
+                      ),
                     ),
                   ),
                 ],
-              ),
-              SizedBox(width: 10),
-              OutlinedButton(
-                onPressed: () {},
-                style: OutlinedButton.styleFrom(
-                  side: BorderSide(color: AppColors.red1, width: 1),
-                  fixedSize: Size(149, 44),
-                  padding: EdgeInsets.symmetric(horizontal: 15),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadiusGeometry.circular(4.0),
-                  ),
-                ),
-                child: Text(
-                  'ЗАКАЗАТЬ ЗВОНОК',
-                  style: GoogleFonts.roboto(
-                    color: AppColors.grey2,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 11,
-                  ),
-                ),
               ),
             ],
           ),
@@ -354,8 +360,10 @@ class _CompanyInfoContainerState extends State<CompanyInfoContainer> {
           Divider(color: AppColors.white3, height: 1),
           SizedBox(height: 17),
           Text(
+            textAlign: TextAlign.start,
             '© 2003-2023 Интернет-магазин ООО «Стройоптторг» р/с 40702810360000102415 в Ставропольское отделение №5230 ПАО Сбербанк, БИК 040702615',
             style: context.bodySmall.copyWith(
+              letterSpacing: 0,
               color: AppColors.grey,
               fontSize: 13,
             ),

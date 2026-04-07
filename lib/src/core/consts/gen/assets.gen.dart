@@ -59,6 +59,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/eye.svg
   String get eye => 'assets/icons/eye.svg';
 
+  /// File path: assets/icons/eye1.svg
+  String get eye1 => 'assets/icons/eye1.svg';
+
   /// File path: assets/icons/left.svg
   String get left => 'assets/icons/left.svg';
 
@@ -148,6 +151,7 @@ class $AssetsIconsGen {
     editprofile,
     email,
     eye,
+    eye1,
     left,
     like,
     like1,
