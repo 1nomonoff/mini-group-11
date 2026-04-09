@@ -11,26 +11,31 @@ class AuthorizationScreen extends StatefulWidget {
 
 class _AuthorizationScreenState extends State<AuthorizationScreen> {
   bool isOn = false;
+  bool isVisible = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Image.asset('assets/images/logo.png'),
-        actions: [
-          SvgPicture.asset('assets/icons/profile.svg'),
-          SizedBox(width: 6),
-          SvgPicture.asset('assets/icons/trading.svg'),
-          SizedBox(width: 6),
-          SvgPicture.asset('assets/icons/like.svg'),
-          SizedBox(width: 6),
-          SvgPicture.asset('assets/icons/cart1.svg'),
-        ],
-      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(left: 15, right: 15),
           child: Column(
             children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Image.asset(
+                    'assets/images/logo.png',
+                    width: 159,
+                    height: 40,
+                  ),
+
+                  SvgPicture.asset('assets/icons/profile.svg'),
+                  SvgPicture.asset('assets/icons/trading.svg'),
+                  SvgPicture.asset('assets/icons/like.svg'),
+                  SvgPicture.asset('assets/icons/cart1.svg'),
+                ],
+              ),
+              SizedBox(height: 32),
               Row(
                 children: [
                   Text(
@@ -38,14 +43,32 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
                     style: TextStyle(fontSize: 16, color: Colors.grey[700]),
                   ),
                   Text(' / ', style: TextStyle(color: Colors.grey)),
-                  Text(
-                    'Авторизация',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                  Row(
+                    children: [
+                      Text(
+                        'Авторизация',
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                      ),
+                    ],
                   ),
                 ],
               ),
-              SizedBox(height: 32),
               Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text('Авторизация', style: GoogleFonts.poppins(fontSize: 30,fontWeight: FontWeight.bold)),
+                ],
+              ),
+              SizedBox(height: 20),
+             Container(
+              padding: EdgeInsets.symmetric(horizontal: 15,vertical: 20),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey[300]!),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Column(
+                children: [
+                   Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
@@ -89,9 +112,15 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
                 decoration: InputDecoration(
                   hintText: 'Введите пароль',
                   suffixIcon: IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.visibility_off),
-                    color: Colors.grey[400],
+                    onPressed: () {
+                      setState(() {
+                        isVisible = !isVisible;
+                      });
+                    },
+                    icon: Icon(
+                      isVisible ? Icons.visibility : Icons.visibility_off,
+                      color: Colors.grey[400],
+                    ),
                   ),
                   hintStyle: TextStyle(color: Colors.grey[400]),
                   border: OutlineInputBorder(
@@ -109,39 +138,41 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
                 ),
               ),
               SizedBox(height: 12),
-               ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: Size(double.infinity, 80),
-                    backgroundColor: Color(0xFFF6F8FB),
-                    foregroundColor: Colors.blue,
-                    padding: EdgeInsets.symmetric(vertical: 14),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  child: Text(
-                    'Восстановить пароль',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/recovery');
+                },
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(double.infinity, 80),
+                  backgroundColor: Color(0xFFF6F8FB),
+                  foregroundColor: Colors.blue,
+                  padding: EdgeInsets.symmetric(vertical: 14),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
                   ),
                 ),
+                child: Text(
+                  'Восстановить пароль',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                ),
+              ),
               SizedBox(height: 10),
-               ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: Size(double.infinity, 80),
-                    backgroundColor: Colors.blue,
-                    foregroundColor: Colors.white,
-                    padding: EdgeInsets.symmetric(vertical: 14),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  child: Text(
-                    'АВТОРИЗОВАТЬСЯ',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+              ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(double.infinity, 80),
+                  backgroundColor: Colors.blue,
+                  foregroundColor: Colors.white,
+                  padding: EdgeInsets.symmetric(vertical: 14),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
                   ),
                 ),
+                child: Text(
+                  'АВТОРИЗОВАТЬСЯ',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                ),
+              ),
               SizedBox(height: 16),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -161,22 +192,28 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
               ),
               SizedBox(height: 24),
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   SvgPicture.asset('assets/icons/addprofile.svg'),
                   Text(
                     'Еще нет аккаунта?',
-                    style: GoogleFonts.poppins(color: Colors.black, fontSize: 14),
+                    style: GoogleFonts.poppins(
+                      color: Colors.black,
+                      fontSize: 14,
+                    ),
                   ),
                 ],
               ),
               SizedBox(height: 24),
-              Text(
-                'Регистрация на сайте позволяет получить доступ к статусу и истории вашего заказа. Просто заполните поля ниже, и вы получите учетную запись.',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.grey[700],
-                  height: 1.4,
+              Align(
+                alignment: Alignment.center,
+                child: Text(
+                  'Регистрация на сайте позволяет получить доступ к статусу и истории вашего заказа. Просто заполните поля ниже, и вы получите учетную запись.',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.grey[700],
+                    height: 1.4,
+                  ),
                 ),
               ),
               SizedBox(height: 16),
@@ -205,6 +242,9 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                 ),
               ),
+                ],
+              ),
+             )
             ],
           ),
         ),
