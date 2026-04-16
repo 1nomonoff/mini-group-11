@@ -20,6 +20,7 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
   bool isOn6 = false;
   bool isOn7 = false;
   bool isOn8 = false;
+  bool isOn9 = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -104,7 +105,9 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                     Container(
                       padding: EdgeInsets.all(14),
                       decoration: BoxDecoration(
-                        border: Border.all(color: isOn6 ? AppColors.blue : Colors.grey),
+                        border: Border.all(
+                          color: isOn6 ? AppColors.blue : Colors.grey,
+                        ),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Column(
@@ -112,14 +115,24 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                         children: [
                           Row(
                             children: [
-                              IconButton(onPressed: (){
-                                setState(() {
-                                  isOn6 = !isOn6;
-                                });
-                              }, icon: Icon(
-                                isOn6 ? Icons.radio_button_checked : Icons.radio_button_off,
-                                color: isOn6 ? AppColors.blue : AppColors.grey,
-                              )),
+                              IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    if (isOn6 = true) {
+                                      isOn7 = false;
+                                      isOn8 = false;
+                                    }
+                                  });
+                                },
+                                icon: Icon(
+                                  isOn6
+                                      ? Icons.radio_button_checked
+                                      : Icons.radio_button_off,
+                                  color: isOn6
+                                      ? AppColors.blue
+                                      : AppColors.grey,
+                                ),
+                              ),
                               SizedBox(width: 10),
                               Text(
                                 'Самовывоз',
@@ -158,19 +171,29 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                     Container(
                       padding: EdgeInsets.all(14),
                       decoration: BoxDecoration(
-                        border: Border.all(color: isOn7 ? AppColors.blue : Colors.grey),
+                        border: Border.all(
+                          color: isOn7 ? AppColors.blue : Colors.grey,
+                        ),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Row(
                         children: [
-                          IconButton(onPressed: (){
-                            setState(() {
-                              isOn7 = !isOn7;
-                            });
-                          }, icon: Icon(
-                            isOn7 ? Icons.radio_button_checked : Icons.radio_button_off,
-                            color: isOn7 ? AppColors.blue : AppColors.grey,
-                          )),
+                          IconButton(
+                            onPressed: () {
+                              setState(() {
+                                if (isOn7 = true) {
+                                  isOn6 = false;
+                                  isOn8 = false;
+                                }
+                              });
+                            },
+                            icon: Icon(
+                              isOn7
+                                  ? Icons.radio_button_checked
+                                  : Icons.radio_button_off,
+                              color: isOn7 ? AppColors.blue : AppColors.grey,
+                            ),
+                          ),
                           SizedBox(width: 10),
                           Expanded(
                             child: Text(
@@ -187,19 +210,29 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                     Container(
                       padding: EdgeInsets.all(14),
                       decoration: BoxDecoration(
-                        border: Border.all(color: isOn8 ? AppColors.blue : Colors.grey),
+                        border: Border.all(
+                          color: isOn8 ? AppColors.blue : Colors.grey,
+                        ),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Row(
                         children: [
-                          IconButton(onPressed: (){
-                            setState(() {
-                              isOn8 = !isOn8;
-                            });
-                          }, icon: Icon(
-                            isOn8 ? Icons.radio_button_checked : Icons.radio_button_off,
-                            color: isOn8 ? AppColors.blue : AppColors.grey,
-                          )),
+                          IconButton(
+                            onPressed: () {
+                              setState(() {
+                                if (isOn8 = true) {
+                                  isOn6 = false;
+                                  isOn7 = false;
+                                }
+                              });
+                            },
+                            icon: Icon(
+                              isOn8
+                                  ? Icons.radio_button_checked
+                                  : Icons.radio_button_off,
+                              color: isOn8 ? AppColors.blue : AppColors.grey,
+                            ),
+                          ),
                           SizedBox(width: 10),
                           Expanded(
                             child: Text(
@@ -224,7 +257,11 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                         IconButton(
                           onPressed: () {
                             setState(() {
-                              isOn2 = !isOn2;
+                              if (isOn2 = true) {
+                                isOn3 = false;
+                                isOn4 = false;
+                                isOn5 = false;
+                              }
                             });
                           },
                           icon: Icon(
@@ -244,7 +281,11 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                         IconButton(
                           onPressed: () {
                             setState(() {
-                              isOn3 = !isOn3;
+                              if (isOn3 = true) {
+                                isOn2 = false;
+                                isOn4 = false;
+                                isOn5 = false;
+                              }
                             });
                           },
                           icon: Icon(
@@ -264,7 +305,11 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                         IconButton(
                           onPressed: () {
                             setState(() {
-                              isOn4 = !isOn4;
+                              if (isOn4 = true) {
+                                isOn2 = false;
+                                isOn3 = false;
+                                isOn5 = false;
+                              }
                             });
                           },
                           icon: Icon(
@@ -275,7 +320,26 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                           ),
                         ),
                         SizedBox(width: 10),
-                        Text('Кредит от ОТП банка Условия предоставления'),
+                        RichText(
+                          text: TextSpan(
+                            text: 'Кредит от ОТП банка',
+                            style: GoogleFonts.poppins(
+                              fontSize: 13,
+                              color: Colors.black,
+                            ),
+                            children: [
+                              TextSpan(
+                                text: ' Условия предоставления',
+                                style: GoogleFonts.poppins(
+                                  color: AppColors.blue,
+                                  decoration: TextDecoration.underline,
+                                ),
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {},
+                              ),
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                     Row(
@@ -283,7 +347,11 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                         IconButton(
                           onPressed: () {
                             setState(() {
-                              isOn5 = !isOn5;
+                              if (isOn5 = true) {
+                                isOn2 = false;
+                                isOn3 = false;
+                                isOn4 = false;
+                              }
                             });
                           },
                           icon: Icon(
@@ -295,117 +363,148 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                         ),
                         SizedBox(width: 10),
                         Expanded(
-                          child: RichText(text:   TextSpan(
-                            text: 'Оплата при получении\nПодробнее об условиях оплаты при получении',
-                            style: TextStyle(fontSize: 13, color: Colors.black),
-                            children: [
-                              TextSpan(
-                                text: ' Подробнее об условиях оплаты при получении',
-                                style: TextStyle(color: AppColors.blue, decoration: TextDecoration.underline),
-                                recognizer: TapGestureRecognizer()..onTap = () {},
+                          child: RichText(
+                            text: TextSpan(
+                              text:
+                                  'Оплата при получении\nПодробнее об условиях оплаты при получении',
+                              style: TextStyle(
+                                fontSize: 13,
+                                color: Colors.black,
                               ),
-                            ],
-                          )),
+                              children: [
+                                TextSpan(
+                                  text:
+                                      ' Подробнее об условиях оплаты при получении',
+                                  style: GoogleFonts.poppins(
+                                    color: AppColors.blue,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {},
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       ],
                     ),
                     SizedBox(height: 16),
-
                     Container(
                       padding: EdgeInsets.all(12),
                       decoration: BoxDecoration(
                         color: AppColors.lightgrey,
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: RichText(text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: 'Есть промокод? ',
-                            style: GoogleFonts.poppins(fontWeight: FontWeight.w500, color: AppColors.black),
-                          ),
-                          TextSpan(
-                            text: 'Нажмите здесь, чтобы ввести его',
-                            style: GoogleFonts.poppins(fontWeight: FontWeight.w500, color: AppColors.blue),
-                            recognizer: TapGestureRecognizer()..onTap = () {},
-                          ),
-                        ],
-                      )),
+                      child: RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: 'Есть промокод? ',
+                              style: GoogleFonts.poppins(
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.black,
+                              ),
+                            ),
+                            TextSpan(
+                              text: 'Нажмите здесь, чтобы ввести его',
+                              style: GoogleFonts.poppins(
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.blue,
+                                decoration: TextDecoration.underline,
+                              ),
+                              recognizer: TapGestureRecognizer()..onTap = () {},
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-
                     SizedBox(height: 20),
-
-                    // Форма
                     Text('Ваше имя *:', style: TextStyle(fontSize: 14)),
                     SizedBox(height: 6),
                     TextField(
                       decoration: InputDecoration(
-                        hintStyle: TextStyle(color: AppColors.darkGrey2),
-                        hintText: 'Как вас зовут',
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(color: AppColors.darkGrey2),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: AppColors.grey),
                           borderRadius: BorderRadius.circular(8),
                         ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: AppColors.grey),
+                          borderRadius: BorderRadius.circular(8),
+                        ), // при фокусе
+                        hintStyle: TextStyle(color: AppColors.grey),
+                        hintText: 'Как вас зовут',
                       ),
                     ),
-
                     SizedBox(height: 14),
-
                     Text('Фамилия *:', style: TextStyle(fontSize: 14)),
                     SizedBox(height: 6),
                     TextField(
                       decoration: InputDecoration(
-                        hintStyle: TextStyle(color: AppColors.darkGrey2),
-                        hintText: 'Введите вашу фамилию',
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(color: AppColors.darkGrey2),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: AppColors.grey),
                           borderRadius: BorderRadius.circular(8),
                         ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: AppColors.grey),
+                          borderRadius: BorderRadius.circular(8),
+                        ), // при фокусе
+                        hintStyle: TextStyle(color: AppColors.grey),
+                        hintText: 'Введите вашу фамилию',
                       ),
                     ),
-
                     SizedBox(height: 14),
-
                     Text('Название компании:', style: TextStyle(fontSize: 14)),
                     SizedBox(height: 6),
                     TextField(
                       decoration: InputDecoration(
-                        hintStyle: TextStyle(color: AppColors.darkGrey2),
-                        hintText: 'Введите название вашей компании',
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(color: AppColors.darkGrey2),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: AppColors.grey),
                           borderRadius: BorderRadius.circular(8),
                         ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: AppColors.grey),
+                          borderRadius: BorderRadius.circular(8),
+                        ), // при фокусе
+                        hintStyle: TextStyle(color: AppColors.grey),
+                        hintText: 'Введите название вашей компании',
                       ),
                     ),
-
                     SizedBox(height: 14),
-
                     Text('Email *:', style: TextStyle(fontSize: 14)),
                     SizedBox(height: 6),
                     TextField(
+                      keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
-                        hintStyle: TextStyle(color: AppColors.darkGrey2),
-                        hintText: 'Введите ваш email адрес',
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(color: AppColors.darkGrey2),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: AppColors.grey),
                           borderRadius: BorderRadius.circular(8),
                         ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: AppColors.grey),
+                          borderRadius: BorderRadius.circular(8),
+                        ), // при фокусе
+                        hintStyle: TextStyle(color: AppColors.grey),
+                        hintText: 'Введите ваш email адрес',
                       ),
                     ),
                     SizedBox(height: 14),
                     Text('Номер телефона *:', style: TextStyle(fontSize: 14)),
                     SizedBox(height: 6),
                     TextField(
+                      keyboardType: TextInputType.number,
                       decoration: InputDecoration(
-                        hintStyle: TextStyle(color: AppColors.darkGrey2),
-                        hintText: '+7 (___) ___-__-__',
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(color: AppColors.red),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: AppColors.grey),
                           borderRadius: BorderRadius.circular(8),
                         ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: AppColors.grey),
+                          borderRadius: BorderRadius.circular(8),
+                        ), // при фокусе
+                        hintStyle: TextStyle(color: AppColors.grey),
+                        hintText: '+7 (___) ___-__-__',
                       ),
                     ),
-
                     SizedBox(height: 12),
                     Row(
                       children: [
@@ -423,24 +522,233 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                       ],
                     ),
                     SizedBox(height: 12),
-
                     Text(
                       'Комментарий к заказу:',
                       style: TextStyle(fontSize: 14),
                     ),
                     SizedBox(height: 6),
                     TextField(
-                      maxLines: 4,
+                      maxLines: 3,
                       decoration: InputDecoration(
-                        hintStyle: TextStyle(color: AppColors.darkGrey2),
-                        hintText: 'Текстовое поле',
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(color: AppColors.darkGrey2),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: AppColors.grey),
                           borderRadius: BorderRadius.circular(8),
                         ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: AppColors.grey),
+                          borderRadius: BorderRadius.circular(8),
+                        ), // при фокусе
+                        hintStyle: TextStyle(color: AppColors.grey),
+                        hintText: 'Текстовое поле',
                       ),
                     ),
                   ],
+                ),
+              ),
+              SizedBox(height: 24),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Ваш заказ',
+                  style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600),
+                ),
+              ),
+              SizedBox(height: 16),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Image.asset('assets/images/image32.png', width: 60),
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Перфоратор универсальный Wander KX45-46 GF 1450W',
+                          style: TextStyle(fontSize: 13),
+                        ),
+                        SizedBox(height: 4),
+                        Text(
+                          'Артикул: XJ89YHGO',
+                          style: TextStyle(color: AppColors.grey, fontSize: 12),
+                        ),
+                        SizedBox(height: 4),
+                        Text(
+                          '7 899 ₽',
+                          style: TextStyle(
+                            color: AppColors.blue,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 14),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Image.asset('assets/images/image28.png', width: 60),
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Перфоратор универсальный Wander KX45-46 GF 1450W',
+                          style: TextStyle(fontSize: 13),
+                        ),
+                        SizedBox(height: 4),
+                        Text(
+                          'Артикул: XJ89YHGO',
+                          style: TextStyle(color: AppColors.grey, fontSize: 12),
+                        ),
+                        SizedBox(height: 4),
+                        Text(
+                          '20 000 ₽',
+                          style: TextStyle(
+                            color: AppColors.blue,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 14),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Image.asset('assets/images/image31.png', width: 60),
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Перфоратор универсальный Wander KX45-46 GF 1450W',
+                          style: TextStyle(fontSize: 13),
+                        ),
+                        SizedBox(height: 4),
+                        Text(
+                          'Артикул: XJ89YHGO',
+                          style: TextStyle(color: AppColors.grey, fontSize: 12),
+                        ),
+                        SizedBox(height: 4),
+                        Text(
+                          '4 756 ₽',
+                          style: TextStyle(
+                            color: AppColors.blue,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 14),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Image.asset('assets/images/image28.png', width: 60),
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Перфоратор универсальный Wander KX45-46 GF 1450W',
+                          style: TextStyle(fontSize: 13),
+                        ),
+                        SizedBox(height: 4),
+                        Text(
+                          'Артикул: XJ89YHGO',
+                          style: TextStyle(color: AppColors.grey, fontSize: 12),
+                        ),
+                        SizedBox(height: 4),
+                        Text(
+                          '20 000 ₽',
+                          style: TextStyle(
+                            color: AppColors.blue,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('Сумма'),
+                  Text('43 829 ₽', style: TextStyle(color: AppColors.blue)),
+                ],
+              ),
+              SizedBox(height: 6),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('Доставка'),
+                  Text('0 ₽', style: TextStyle(color: AppColors.blue)),
+                ],
+              ),
+              Divider(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('Итого', style: TextStyle(fontWeight: FontWeight.w600)),
+                  Text(
+                    '43 829 ₽',
+                    style: TextStyle(
+                      color: AppColors.blue,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 16),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Checkbox(
+                    side: BorderSide(color: AppColors.darkGrey2),
+                    activeColor: AppColors.blue,
+                    value: isOn9,
+                    onChanged: (value) {
+                      setState(() {
+                        isOn9 = !isOn9;
+                      });
+                    },
+                  ),
+                  Expanded(
+                    child: Text(
+                      'Согласен с обработкой персональных данных в соответствии с политикой конфиденциальности',
+                      style: TextStyle(fontSize: 12),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 16),
+              SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.blue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  onPressed: () {},
+                  child: Text(
+                    'ОФОРМИТЬ ЗАКАЗ',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               ),
             ],
