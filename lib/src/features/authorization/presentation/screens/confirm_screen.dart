@@ -3,16 +3,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mini_group_11/src/core/consts/colors/app_colors.dart';
 
-class ConfirmScreen extends StatefulWidget {
+class ConfirmScreen extends StatelessWidget {
  const ConfirmScreen({super.key});
 
-  @override
-  State<ConfirmScreen> createState() => _ConfirmScreenState();
-}
-
-class _ConfirmScreenState extends State<ConfirmScreen> {
-  bool isOn = false;
-  bool isVisible = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,21 +24,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                   SvgPicture.asset('assets/icons/like.svg'),
                   SvgPicture.asset('assets/icons/cart1.svg'),
                 ],
-              ),
-              SizedBox(height: 32),
-              Row(
-                children: [
-                  Text(
-                    'Стройоптторг',
-                    style: TextStyle(fontSize: 16, color: Colors.grey[700]),
-                  ),
-                  Text(' / ', style: TextStyle(color: Colors.grey)),
-                  Text(
-                    'Авторизация',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                  ),
-                ],
-              ),
+              ),             
               SizedBox(height: 20),
               Align(
                 alignment: Alignment.centerLeft,

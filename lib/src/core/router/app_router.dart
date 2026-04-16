@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mini_group_11/src/features/authorization/presentation/screens/confirm_order_screen.dart';
 import 'package:mini_group_11/src/features/authorization/presentation/screens/privacy_policy.dart';
 import 'package:mini_group_11/src/features/authorization/presentation/screens/confirm_screen.dart';
 import 'package:mini_group_11/src/features/authorization/presentation/screens/authorization_screen.dart';
@@ -16,6 +17,8 @@ class AppRouter {
         return customRouter(ConfirmScreen());
         case '/privacy':
         return customRouter(PrivacyPolicy());
+        case '/order':
+        return customRouter(ConfirmOrderScreen());
       default:
     }
   }

@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mini_group_11/src/core/consts/colors/app_colors.dart';
 
 class RecoveryScreen extends StatelessWidget {
- const RecoveryScreen({super.key});
+  const RecoveryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AuthorizationScreen extends StatefulWidget {
-  AuthorizationScreen({super.key});
+ const AuthorizationScreen({super.key});
 
   @override
   State<AuthorizationScreen> createState() => _AuthorizationScreenState();
