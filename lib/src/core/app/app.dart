@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.light,
       debugShowCheckedModeBanner: false,
       onGenerateRoute: AppRouter.onGenerateRoute,
-      initialRoute: '/personal_account',
+      initialRoute: '/privacy_policy',
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:mini_group_11/src/core/consts/colors/app_colors.dart';
 import 'package:mini_group_11/src/core/consts/gen/assets.gen.dart';
 import 'package:mini_group_11/src/core/utils/text_style_extension.dart';
+import 'package:mini_group_11/src/features/personal_account/presentation/widgets/log_out_dialog.dart';
 import 'package:mini_group_11/src/features/personal_account/presentation/widgets/pa_drawer_item.dart';
 
 class PADrawer extends StatelessWidget {
@@ -17,7 +18,8 @@ class PADrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Drawer(width: MediaQuery.widthOf(context) * 0.9,
+    return Drawer(
+      width: MediaQuery.widthOf(context) * 0.9,
       child: SafeArea(
         child: Column(
           children: [
@@ -44,7 +46,7 @@ class PADrawer extends StatelessWidget {
                         borderRadius: BorderRadius.circular(4.0),
                         color: AppColors.white2,
                       ),
-                      child: SvgPicture.asset(Assets.icons.cancel,),
+                      child: SvgPicture.asset(Assets.icons.cancel),
                     ),
                   ),
                 ],
@@ -98,7 +100,10 @@ class PADrawer extends StatelessWidget {
               text: 'Выйти из аккаунта',
               index: 5,
               selectedIndex: selectedIndex,
-              onSelect: onSelect,
+              onSelect: (_) => showDialog(
+                context: context,
+                builder: (context) => LogOutDialog(),
+              ),
             ),
           ],
         ),

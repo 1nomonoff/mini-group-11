@@ -6,6 +6,7 @@ class AppColors {
   static final Color white1 = Color(0XFFEBEEF0);
   static final Color white2 = Color(0XFFF6F8FB);
   static final Color white3 = Color(0XFFDCE1E7);
+  static final Color white4 = Color(0XFFF8F8F8);
   static final Color borderColor = Color(0XFFEFF1F3);
   static final Color black1 = Color(0XFF011120);
   static final Color black2 = Color(0XFF2B2A28);
@@ -14,8 +15,8 @@ class AppColors {
   static final Color black5 = Color(0XFF1E1E1E);
   static final Color darkblue = Color(0XFF2A5E8D);
   static final Color blue = Color(0XFF186FD4);
-  static final Color primaryblue = Color(0XFF186FD4);  
-  static final Color grey = Color(0XFF91969D);  
+  static final Color primaryblue = Color(0XFF186FD4);
+  static final Color grey = Color(0XFF91969D);
   static final Color grey1 = Color(0XFF4E5760);
   static final Color grey2 = Color(0XFF474B4E);
   static final Color grey3 = Color(0XFF6B6F73);

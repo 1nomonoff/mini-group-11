@@ -9,6 +9,7 @@ import 'package:mini_group_11/src/features/personal_account/presentation/screens
 import 'package:mini_group_11/src/features/personal_account/presentation/screens/edit_profile_page.dart';
 import 'package:mini_group_11/src/features/personal_account/presentation/screens/my_address_page.dart';
 import 'package:mini_group_11/src/features/personal_account/presentation/screens/my_orders_page.dart';
+import 'package:mini_group_11/src/features/personal_account/presentation/widgets/log_out_dialog.dart';
 import 'package:mini_group_11/src/features/personal_account/presentation/widgets/orders_container.dart';
 import 'package:mini_group_11/src/features/personal_account/presentation/widgets/pa_container.dart';
 import 'package:mini_group_11/src/features/personal_account/presentation/widgets/pa_drawer.dart';
@@ -49,30 +50,34 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                           onTap: () {},
                           child: Text(
                             'Стройоптторг',
-                            style: GoogleFonts.roboto(
+                            style: context.bodySmall.copyWith(
                               color: AppColors.darkgrey,
-                              fontWeight: FontWeight.w400,
                               fontSize: 13,
                             ),
                           ),
                         ),
                         Text(
                           '/',
-                          style: GoogleFonts.roboto(
+                          style: context.bodySmall.copyWith(
                             color: AppColors.grey,
-                            fontWeight: FontWeight.w400,
                             fontSize: 13,
                           ),
                         ),
                         InkWell(
                           onTap: () {
-                            Navigator.pushNamed(context, '/personal_account');
+                            Future.delayed(Duration(milliseconds: 300), () {
+                              if (mounted) {
+                                Navigator.pushNamed(
+                                  context,
+                                  '/personal_account',
+                                );
+                              }
+                            });
                           },
                           child: Text(
                             'Личный кабинет',
-                            style: GoogleFonts.roboto(
+                            style: context.bodySmall.copyWith(
                               color: AppColors.grey,
-                              fontWeight: FontWeight.w400,
                               fontSize: 13,
                             ),
                           ),
@@ -82,10 +87,10 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                     SizedBox(height: 32),
                     Text(
                       'Личный кабинет',
-                      style: GoogleFonts.roboto(
+                      style: context.headlineMedium.copyWith(
                         color: AppColors.darkgrey,
-                        fontWeight: FontWeight.w700,
                         fontSize: 30,
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
                   ],
@@ -199,7 +204,12 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                           PAContainer(
                             svg: Assets.icons.logout,
                             text: 'ВЫЙТИ',
-                            onTap: () => setState(() => _selectedIndex = 5),
+                            onTap: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) => LogOutDialog(),
+                              );
+                            },
                           ),
                         ],
                       ),

@@ -12,6 +12,7 @@ class PADrawerItem extends StatelessWidget {
     required this.selectedIndex,
     required this.onSelect,
     this.badge,
+    this.closeDrawer = true,
   });
 
   final String svg;
@@ -20,14 +21,17 @@ class PADrawerItem extends StatelessWidget {
   final int? selectedIndex;
   final ValueChanged<int> onSelect;
   final int? badge;
+  final bool closeDrawer;
 
   @override
   Widget build(BuildContext context) {
     final bool isSelected = selectedIndex == index;
     return InkWell(
       onTap: () {
+        if (closeDrawer) {
+          Navigator.pop(context);
+        }
         onSelect(index);
-        Navigator.pop(context);
       },
       child: Container(
         height: 75,
