@@ -37,23 +37,6 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
               ),
               SizedBox(height: 32),
               Row(
-                children: [
-                  Text(
-                    'Стройоптторг',
-                    style: TextStyle(fontSize: 16, color: Colors.grey[700]),
-                  ),
-                  Text(' / ', style: TextStyle(color: Colors.grey)),
-                  Row(
-                    children: [
-                      Text(
-                        'Авторизация',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text('Авторизация', style: GoogleFonts.poppins(fontSize: 30,fontWeight: FontWeight.bold)),

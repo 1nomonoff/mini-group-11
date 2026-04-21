@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         theme: AppTheme.light,
         debugShowCheckedModeBanner: false,
         onGenerateRoute: AppRouter.onGenerateRoute,
-        initialRoute: '/order',
+        initialRoute: '/privacy',
         // home: const MyHomePage(title: 'Flutter Demo Home Page'),
       ),
     );

@@ -25,20 +25,6 @@ class RecoveryScreen extends StatelessWidget {
                   SvgPicture.asset('assets/icons/cart1.svg'),
                 ],
               ),
-              SizedBox(height: 32),
-              Row(
-                children: [
-                  Text(
-                    'Стройоптторг',
-                    style: TextStyle(fontSize: 16, color: Colors.grey[700]),
-                  ),
-                  Text(' / ', style: TextStyle(color: Colors.grey)),
-                  Text(
-                    'Авторизация',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                  ),
-                ],
-              ),
               SizedBox(height: 20),
               Align(
                 alignment: Alignment.centerLeft,
