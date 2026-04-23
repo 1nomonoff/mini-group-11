@@ -4,7 +4,7 @@ import 'package:mini_group_11/src/core/utils/auth_validators.dart';
 import 'package:mini_group_11/src/core/utils/text_style_extension.dart';
 import 'package:mini_group_11/src/core/widgets/blue_button_widget.dart';
 import 'package:mini_group_11/src/features/personal_account/presentation/widgets/custom_rich_text.dart';
-import 'package:mini_group_11/src/features/personal_account/presentation/widgets/custom_text_form_field.dart';
+import 'package:mini_group_11/src/core/widgets/custom_text_form_field.dart';
 
 class ChangePasswordPage extends StatefulWidget {
   const ChangePasswordPage({super.key});

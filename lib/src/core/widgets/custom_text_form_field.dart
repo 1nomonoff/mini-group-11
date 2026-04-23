@@ -24,6 +24,7 @@ class CustomTextFormField extends StatefulWidget {
 
 class _CustomTextFormFieldState extends State<CustomTextFormField> {
   bool _obscure = true;
+  bool _hasError = false;
 
   @override
   Widget build(BuildContext context) {
@@ -42,15 +43,20 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         ],
       ),
       child: TextFormField(
-        validator: widget.validator,
+        validator: (value) {
+          final result = widget.validator?.call(value);
+          setState(() => _hasError = result != null);
+          return result;
+        },
         controller: widget.controller,
         obscureText: widget.isPassword ? _obscure : false,
         decoration: InputDecoration(
-          hintText: widget.text,
+          hintText: _hasError ? 'Заполните поле' : widget.text,
           hintStyle: context.bodyMedium.copyWith(
-            color: AppColors.grey4,
+            color: _hasError ? AppColors.red3 : AppColors.grey4,
             fontSize: 15,
           ),
+          errorStyle: TextStyle(height: 0, fontSize: 0),
           suffixIcon: widget.isPassword
               ? IconButton(
                   onPressed: () => setState(() => _obscure = !_obscure),
