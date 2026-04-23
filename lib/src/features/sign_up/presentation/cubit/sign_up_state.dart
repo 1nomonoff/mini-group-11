@@ -1,12 +1,9 @@
-abstract class SignUpState {}
+part of 'sign_up_cubit.dart';
 
-class SignUpInitial extends SignUpState {}
-
-class SignUpLoading extends SignUpState {}
-
-class SignUpError extends SignUpState {
-  final List<String> errors;
-  SignUpError(this.errors);
+class SignUpState {
+  SignUpStatus status;
+  List<String> errors;
+  SignUpState({this.status = SignUpStatus.initial}) : errors = [];
 }
 
-class SignUpSuccess extends SignUpState {}
+enum SignUpStatus { error, loading, loaded, initial }

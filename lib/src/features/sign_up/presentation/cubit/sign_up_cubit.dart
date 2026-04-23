@@ -1,10 +1,15 @@
 import 'package:bloc/bloc.dart';
-import 'package:mini_group_11/src/features/sign_up/presentation/cubit/sign_up_state.dart';
+import 'package:mini_group_11/src/features/sign_up/domain/usecase/sign_up_usecase.dart';
+part 'sign_up_state.dart';
 
 class SignUpCubit extends Cubit<SignUpState> {
-  SignUpCubit() : super(SignUpInitial());
+  SignUpUsecase signUpUsecase;
 
-  void signUp({
+  SignUpCubit({
+    required this.signUpUsecase
+  }) : super(SignUpState(status: SignUpStatus.initial));
+
+  Future<void> signUp({
     required String email,
     required String phone,
     required String name,
@@ -13,7 +18,8 @@ class SignUpCubit extends Cubit<SignUpState> {
     required String confirmPassword,
     required bool isChecked,
     required bool isChecked1,
-  }) {
+    required Map<String, dynamic> userInfo,
+  }) async {
     final List<String> errors = [];
 
     if (email.isEmpty) errors.add('Поле Email не может быть пустым');
@@ -27,10 +33,19 @@ class SignUpCubit extends Cubit<SignUpState> {
     if (!isChecked1) errors.add('Вы должны согласиться с обработкой персональных данных');
 
     if (errors.isNotEmpty) {
-      emit(SignUpError(errors));
+      emit(SignUpState(status: SignUpStatus.error,));
       return;
     }
 
-    emit(SignUpSuccess());
+    try {
+      final result = await signUpUsecase.call(userInfo);
+      if (result.isRight) {
+        emit(SignUpState(status: SignUpStatus.loaded));
+      } else {
+        throw Exception();
+      }
+    } catch (e) {
+      emit(SignUpState(status: SignUpStatus.error,));
+    }
   }
 }

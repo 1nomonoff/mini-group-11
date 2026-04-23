@@ -10,7 +10,6 @@ import 'package:mini_group_11/src/core/widgets/company_info_container.dart';
 import 'package:mini_group_11/src/core/widgets/custom_text_form_field.dart';
 import 'package:mini_group_11/src/features/personal_account/presentation/widgets/custom_rich_text.dart';
 import 'package:mini_group_11/src/features/sign_up/presentation/cubit/sign_up_cubit.dart';
-import 'package:mini_group_11/src/features/sign_up/presentation/cubit/sign_up_state.dart';
 import 'package:mini_group_11/src/features/sign_up/presentation/widgets/dashed_border_painter.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -100,12 +99,12 @@ class _SignUpPageState extends State<SignUpPage> {
                     SizedBox(height: 20),
                     BlocConsumer<SignUpCubit, SignUpState>(
                       listener: (context, state) {
-                        if (state is SignUpSuccess) {
+                        if (state.status == SignUpStatus.loaded) {
                           Navigator.pushNamed(context, '/personal_account');
                         }
                       },
                       builder: (context, state) {
-                        final errors = state is SignUpError
+                        final errors = state.status == SignUpStatus.error
                             ? state.errors
                             : <String>[];
 
@@ -309,6 +308,9 @@ class _SignUpPageState extends State<SignUpPage> {
                                       });
                                       _formKey.currentState!.validate();
                                       context.read<SignUpCubit>().signUp(
+                                        userInfo: {
+                                          // user info yoziladi
+                                        } ,
                                         email: _emailController.text,
                                         phone: _phoneController.text,
                                         name: _nameController.text,
