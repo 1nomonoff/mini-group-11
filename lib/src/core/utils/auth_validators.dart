@@ -34,4 +34,34 @@ class AuthValidators {
     if (value == null || value.isEmpty) return 'Введите регион';
     return null;
   }
+
+  static String? name1Validator(String? value) {
+    if (value == null || value.isEmpty) return '';
+    return null;
+  }
+
+  static String? lastNameValidator(String? value) {
+    if (value == null || value.isEmpty) return '';
+    return null;
+  }
+
+  static String? cityNameValidator(String? value) {
+    if (value == null || value.isEmpty) return '';
+    return null;
+  }
+
+  static String? streetNameValidator(String? value) {
+    if (value == null || value.isEmpty) return '';
+    return null;
+  }
+
+  static String? indexValidator(String? value) {
+    if (value == null || value.isEmpty) return '';
+    return null;
+  }
+
+  static String? houseNumberValidator(String? value) {
+    if (value == null || value.isEmpty) return '';
+    return null;
+  }
 }

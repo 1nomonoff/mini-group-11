@@ -7,6 +7,8 @@ import 'package:mini_group_11/src/core/utils/auth_validators.dart';
 import 'package:mini_group_11/src/core/utils/text_style_extension.dart';
 import 'package:mini_group_11/src/core/widgets/blue_button_widget.dart';
 import 'package:mini_group_11/src/core/widgets/company_info_container.dart';
+import 'package:mini_group_11/src/core/widgets/custom_app_bar.dart';
+import 'package:mini_group_11/src/core/widgets/custom_header.dart';
 import 'package:mini_group_11/src/core/widgets/custom_text_form_field.dart';
 import 'package:mini_group_11/src/features/personal_account/presentation/widgets/custom_rich_text.dart';
 import 'package:mini_group_11/src/features/sign_up/presentation/cubit/sign_up_cubit.dart';
@@ -47,11 +49,12 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppBar(),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(
             children: [
-              SizedBox(height: 182, child: Text("HOME")),
+              CustomHeader(),
               Padding(
                 padding: const EdgeInsetsGeometry.only(
                   left: 15,

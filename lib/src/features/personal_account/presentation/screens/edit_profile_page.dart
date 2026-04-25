@@ -22,11 +22,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
   @override
   void dispose() {
-    super.dispose();
     _emailController.dispose();
     _nameController.dispose();
     _phoneController.dispose();
     _regionController.dispose();
+    super.dispose();
   }
 
   @override

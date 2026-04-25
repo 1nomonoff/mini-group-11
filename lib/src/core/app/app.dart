@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         theme: AppTheme.light,
         debugShowCheckedModeBanner: false,
         onGenerateRoute: AppRouter.onGenerateRoute,
-        initialRoute: '/sign_up',
+        initialRoute: '/personal_account',
       ),
     );
   }

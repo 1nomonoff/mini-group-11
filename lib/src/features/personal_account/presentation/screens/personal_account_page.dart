@@ -5,6 +5,8 @@ import 'package:mini_group_11/src/core/consts/colors/app_colors.dart';
 import 'package:mini_group_11/src/core/consts/gen/assets.gen.dart';
 import 'package:mini_group_11/src/core/utils/text_style_extension.dart';
 import 'package:mini_group_11/src/core/widgets/company_info_container.dart';
+import 'package:mini_group_11/src/core/widgets/custom_app_bar.dart';
+import 'package:mini_group_11/src/core/widgets/custom_header.dart';
 import 'package:mini_group_11/src/features/personal_account/presentation/screens/change_password_page.dart';
 import 'package:mini_group_11/src/features/personal_account/presentation/screens/edit_profile_page.dart';
 import 'package:mini_group_11/src/features/personal_account/presentation/screens/my_address_page.dart';
@@ -33,11 +35,12 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
         selectedIndex: _selectedIndex,
         onSelect: (index) => setState(() => _selectedIndex = index),
       ),
+      appBar: CustomAppBar(),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(
             children: [
-              SizedBox(height: 182, child: Text('HOME')),
+              CustomHeader(),
               Padding(
                 padding: const EdgeInsets.only(left: 15, right: 15, top: 12),
                 child: Column(

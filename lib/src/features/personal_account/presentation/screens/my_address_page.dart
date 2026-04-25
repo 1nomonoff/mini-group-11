@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mini_group_11/src/core/consts/colors/app_colors.dart';
 import 'package:mini_group_11/src/core/consts/gen/assets.gen.dart';
 import 'package:mini_group_11/src/core/utils/text_style_extension.dart';
+import 'package:mini_group_11/src/features/personal_account/presentation/screens/edit_address_page.dart';
 
 class MyAddressPage extends StatefulWidget {
   const MyAddressPage({super.key});
@@ -16,17 +17,26 @@ class _MyAddressPageState extends State<MyAddressPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey();
+  bool _isEditing = false;
 
   @override
   void dispose() {
-    super.dispose();
     _addressController.dispose();
     _emailController.dispose();
     _phoneController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    return _isEditing ? EditAddressPage(
+      onSaved: () => setState(() {
+        _isEditing = false;
+      }),
+    ) : _buildViewMode(context);
+  }
+
+  Widget _buildViewMode(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Column(
@@ -148,7 +158,11 @@ class _MyAddressPageState extends State<MyAddressPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            setState(() {
+                              _isEditing = true;
+                            });
+                          },
                           child: Expanded(
                             child: Row(
                               children: [

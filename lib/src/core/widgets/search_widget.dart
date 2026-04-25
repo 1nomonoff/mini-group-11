@@ -1,13 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mini_group_11/src/core/consts/colors/app_colors.dart';
 import 'package:mini_group_11/src/core/consts/gen/assets.gen.dart';
 
 class SearchWidget extends StatelessWidget {
-  const SearchWidget({
-    super.key,
-  });
+  const SearchWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,14 +29,17 @@ class SearchWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
               ),
               child: TextField(
-                decoration: const InputDecoration(hintStyle: TextStyle(color:Colors.blueGrey),
+                decoration: const InputDecoration(
+                  hintStyle: TextStyle(color: Colors.blueGrey),
                   hintText: "Поиск...",
                   border: InputBorder.none,
                   contentPadding: EdgeInsets.symmetric(horizontal: 12),
                 ),
               ),
             ),
-          ),SizedBox(width: 6,),SvgPicture.asset(Assets.icons.search)
+          ),
+          SizedBox(width: 6),
+          SvgPicture.asset(Assets.icons.search),
         ],
       ),
     );
