@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mini_group_11/src/core/consts/colors/app_colors.dart';
 import 'package:mini_group_11/src/core/consts/gen/assets.gen.dart';
+import 'package:mini_group_11/src/core/utils/check_device_extension.dart';
 
 class SearchWidget extends StatelessWidget {
   const SearchWidget({super.key});
@@ -16,14 +17,12 @@ class SearchWidget extends StatelessWidget {
         color: AppColors.primaryblue,
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
             padding: const EdgeInsets.all(2),
             child: Container(
               height: 42,
-              width: 144,
+              width: context.checkDevice() == DeviceType.mobile ? 144 : 487,
               decoration: BoxDecoration(
                 color: AppColors.white,
                 borderRadius: BorderRadius.circular(8),
@@ -38,7 +37,7 @@ class SearchWidget extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(width: 6),
+          SizedBox(width: context.checkDevice() == DeviceType.mobile ? 9 : 21),
           SvgPicture.asset(Assets.icons.search),
         ],
       ),

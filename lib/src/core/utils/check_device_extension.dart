@@ -4,12 +4,13 @@ extension CheckDeviceExtension on BuildContext {
   DeviceType checkDevice() {
     double width = MediaQuery.sizeOf(this).width;
 
-    if (width <= 360) {
+    if (width <= 650) {
       return DeviceType.mobile;
-    } else {
+    } else if (width > 650) {
       return DeviceType.tab;
     }
+    return DeviceType.tab;
   }
 }
 
-enum DeviceType { mobile, tab}
+enum DeviceType { mobile, tab }

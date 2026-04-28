@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mini_group_11/src/core/consts/colors/app_colors.dart';
 import 'package:mini_group_11/src/core/consts/gen/assets.gen.dart';
+import 'package:mini_group_11/src/core/utils/check_device_extension.dart';
 
 class Mainbutton extends StatelessWidget {
   const Mainbutton({super.key, required this.onPressed});
@@ -16,7 +17,7 @@ class Mainbutton extends StatelessWidget {
       label: Text(
         'КАТАЛОГ',
         style: TextStyle(
-          fontSize: 12,
+          fontSize: context.checkDevice() == DeviceType.mobile ? 12 : 13,
           fontWeight: FontWeight.w700,
           color: AppColors.white,
         ),

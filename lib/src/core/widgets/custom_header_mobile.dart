@@ -5,8 +5,8 @@ import 'package:mini_group_11/src/core/consts/gen/assets.gen.dart';
 import 'package:mini_group_11/src/core/widgets/main_button_widget.dart';
 import 'package:mini_group_11/src/core/widgets/search_widget.dart';
 
-class CustomHeader extends StatelessWidget {
-  const CustomHeader({super.key});
+class CustomHeaderMobile extends StatelessWidget {
+  const CustomHeaderMobile({super.key});
 
   @override
   Widget build(BuildContext context) {

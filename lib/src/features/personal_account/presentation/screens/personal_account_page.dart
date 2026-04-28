@@ -3,10 +3,13 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mini_group_11/src/core/consts/colors/app_colors.dart';
 import 'package:mini_group_11/src/core/consts/gen/assets.gen.dart';
+import 'package:mini_group_11/src/core/utils/check_device_extension.dart';
 import 'package:mini_group_11/src/core/utils/text_style_extension.dart';
 import 'package:mini_group_11/src/core/widgets/company_info_container.dart';
-import 'package:mini_group_11/src/core/widgets/custom_app_bar.dart';
-import 'package:mini_group_11/src/core/widgets/custom_header.dart';
+import 'package:mini_group_11/src/core/widgets/custom_app_bar_mobile.dart';
+import 'package:mini_group_11/src/core/widgets/custom_app_bar_tab.dart';
+import 'package:mini_group_11/src/core/widgets/custom_header_mobile.dart';
+import 'package:mini_group_11/src/core/widgets/custom_header_tab.dart';
 import 'package:mini_group_11/src/features/personal_account/presentation/screens/change_password_page.dart';
 import 'package:mini_group_11/src/features/personal_account/presentation/screens/edit_profile_page.dart';
 import 'package:mini_group_11/src/features/personal_account/presentation/screens/my_address_page.dart';
@@ -35,14 +38,18 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
         selectedIndex: _selectedIndex,
         onSelect: (index) => setState(() => _selectedIndex = index),
       ),
-      appBar: CustomAppBar(),
+      appBar: context.checkDevice() == DeviceType.mobile
+          ? CustomAppBarMobile()
+          : CustomAppBarTab(),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(
             children: [
-              CustomHeader(),
+              context.checkDevice() == DeviceType.mobile
+                  ? CustomHeaderMobile()
+                  : CustomHeaderTab(),
               Padding(
-                padding: const EdgeInsets.only(left: 15, right: 15, top: 12),
+                padding: const EdgeInsets.only(left: 25, right: 25, top: 12),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -149,7 +156,7 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                           InkWell(
                             onTap: () => setState(() => _selectedIndex = 0),
                             child: Container(
-                              width: 158,
+                              width: context.checkDevice() == DeviceType.mobile ? 158 : 229,
                               height: 133,
                               decoration: BoxDecoration(
                                 color: AppColors.blue,
@@ -177,26 +184,71 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                             text: 'ИЗМЕНИТЬ ПРОФИЛЬ',
                             onTap: () => setState(() => _selectedIndex = 1),
                           ),
+                          SizedBox(
+                            child: context.checkDevice() == DeviceType.mobile
+                                ? SizedBox()
+                                : PAContainer(
+                                    svg: Assets.icons.share,
+                                    text: 'АДРЕС ДОСТАВКИ',
+                                    onTap: () =>
+                                        setState(() => _selectedIndex = 2),
+                                  ),
+                          ),
                         ],
                       ),
                       SizedBox(height: 15),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          PAContainer(
-                            svg: Assets.icons.share,
-                            text: 'АДРЕС ДОСТАВКИ',
-                            onTap: () => setState(() => _selectedIndex = 2),
+                          SizedBox(
+                            child: context.checkDevice() == DeviceType.mobile
+                                ? PAContainer(
+                                    svg: Assets.icons.share,
+                                    text: 'АДРЕС ДОСТАВКИ',
+                                    onTap: () =>
+                                        setState(() => _selectedIndex = 2),
+                                  )
+                                : PAContainer(
+                                    svg: Assets.icons.like1,
+                                    text: 'ИЗБРАННОЕ',
+                                    onTap: () =>
+                                        setState(() => _selectedIndex = 3),
+                                  ),
                           ),
-                          PAContainer(
-                            svg: Assets.icons.like1,
-                            text: 'ИЗБРАННОЕ',
-                            onTap: () => setState(() => _selectedIndex = 3),
+                          SizedBox(
+                            child: context.checkDevice() == DeviceType.mobile
+                                ? PAContainer(
+                                    svg: Assets.icons.like1,
+                                    text: 'ИЗБРАННОЕ',
+                                    onTap: () =>
+                                        setState(() => _selectedIndex = 3),
+                                  )
+                                : PAContainer(
+                                    svg: Assets.icons.parol,
+                                    text: 'СМЕНИТЬ ПАРОЛЬ',
+                                    onTap: () =>
+                                        setState(() => _selectedIndex = 4),
+                                  ),
+                          ),
+                          SizedBox(
+                            child: context.checkDevice() == DeviceType.mobile
+                                ? null
+                                : PAContainer(
+                                    svg: Assets.icons.logout,
+                                    text: 'ВЫЙТИ',
+                                    onTap: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) => LogOutDialog(),
+                                      );
+                                    },
+                                  ),
                           ),
                         ],
                       ),
                       SizedBox(height: 15),
-                      Row(
+                      SizedBox(
+                        child: context.checkDevice() == DeviceType.mobile ? Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           PAContainer(
@@ -215,6 +267,7 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                             },
                           ),
                         ],
+                      ) : null,
                       ),
                       SizedBox(height: 30),
                       Text(
