@@ -17,6 +17,7 @@ import 'package:mini_group_11/src/features/personal_account/presentation/screens
 import 'package:mini_group_11/src/features/personal_account/presentation/widgets/log_out_dialog.dart';
 import 'package:mini_group_11/src/features/personal_account/presentation/widgets/orders_container.dart';
 import 'package:mini_group_11/src/features/personal_account/presentation/widgets/pa_container.dart';
+import 'package:mini_group_11/src/features/personal_account/presentation/widgets/pa_container_tab.dart';
 import 'package:mini_group_11/src/features/personal_account/presentation/widgets/pa_drawer.dart';
 
 class PersonalAccountPage extends StatefulWidget {
@@ -108,33 +109,101 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
               ),
               SizedBox(height: 20),
               if (_selectedIndex != null)
-                InkWell(
-                  onTap: () => _scaffoldKey.currentState!.openDrawer(),
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 21),
-                    decoration: BoxDecoration(
-                      border: Border.symmetric(
-                        horizontal: BorderSide(
-                          width: 1,
-                          color: AppColors.borderColor,
-                        ),
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset(Assets.icons.menu1),
-                        SizedBox(width: 10),
-                        Text(
-                          'Меню профиля',
-                          style: context.bodyLarge.copyWith(
-                            color: AppColors.darkgrey,
+                context.checkDevice() == DeviceType.mobile
+                    ? InkWell(
+                        onTap: () => _scaffoldKey.currentState!.openDrawer(),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 10,
+                            vertical: 21,
+                          ),
+                          decoration: BoxDecoration(
+                            border: Border.symmetric(
+                              horizontal: BorderSide(
+                                width: 1,
+                                color: AppColors.borderColor,
+                              ),
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SvgPicture.asset(Assets.icons.menu1),
+                              SizedBox(width: 10),
+                              Text(
+                                'Меню профиля',
+                                style: context.bodyLarge.copyWith(
+                                  color: AppColors.darkgrey,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                      ],
-                    ),
-                  ),
-                )
+                      )
+                    : Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            InkWell(
+                              onTap: () => setState(() => _selectedIndex = 0),
+                              child: Container(
+                                width: 111,
+                                height: 110,
+                                decoration: BoxDecoration(
+                                  color: AppColors.blue,
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    SvgPicture.asset(Assets.icons.categorymenu),
+                                    Text(
+                                      'МОИ ЗАКАЗЫ',
+                                      style: GoogleFonts.roboto(
+                                        color: AppColors.white,
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 13,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            PaContainerTab(
+                              svg: Assets.icons.editprofile,
+                              text: 'ИЗМЕНИТЬ ПРОФИЛЬ',
+                              onTap: () => setState(() => _selectedIndex = 1),
+                            ),
+                            PaContainerTab(
+                              svg: Assets.icons.share,
+                              text: 'АДРЕС ДОСТАВКИ',
+                              onTap: () => setState(() => _selectedIndex = 2),
+                            ),
+                            PaContainerTab(
+                              svg: Assets.icons.like1,
+                              text: 'ИЗБРАННОЕ',
+                              onTap: () => setState(() => _selectedIndex = 3),
+                            ),
+                            PaContainerTab(
+                              svg: Assets.icons.parol,
+                              text: 'СМЕНИТЬ ПАРОЛЬ',
+                              onTap: () => setState(() => _selectedIndex = 4),
+                            ),
+                            PaContainerTab(
+                              svg: Assets.icons.logout,
+                              text: 'ВЫЙТИ',
+                              onTap: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) => LogOutDialog(),
+                                );
+                              },
+                            ),
+                          ],
+                        ),
+                    )
               else ...[
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -156,7 +225,9 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                           InkWell(
                             onTap: () => setState(() => _selectedIndex = 0),
                             child: Container(
-                              width: context.checkDevice() == DeviceType.mobile ? 158 : 229,
+                              width: context.checkDevice() == DeviceType.mobile
+                                  ? 158
+                                  : 229,
                               height: 133,
                               decoration: BoxDecoration(
                                 color: AppColors.blue,
@@ -248,26 +319,30 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                       ),
                       SizedBox(height: 15),
                       SizedBox(
-                        child: context.checkDevice() == DeviceType.mobile ? Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          PAContainer(
-                            svg: Assets.icons.parol,
-                            text: 'СМЕНИТЬ ПАРОЛЬ',
-                            onTap: () => setState(() => _selectedIndex = 4),
-                          ),
-                          PAContainer(
-                            svg: Assets.icons.logout,
-                            text: 'ВЫЙТИ',
-                            onTap: () {
-                              showDialog(
-                                context: context,
-                                builder: (context) => LogOutDialog(),
-                              );
-                            },
-                          ),
-                        ],
-                      ) : null,
+                        child: context.checkDevice() == DeviceType.mobile
+                            ? Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  PAContainer(
+                                    svg: Assets.icons.parol,
+                                    text: 'СМЕНИТЬ ПАРОЛЬ',
+                                    onTap: () =>
+                                        setState(() => _selectedIndex = 4),
+                                  ),
+                                  PAContainer(
+                                    svg: Assets.icons.logout,
+                                    text: 'ВЫЙТИ',
+                                    onTap: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) => LogOutDialog(),
+                                      );
+                                    },
+                                  ),
+                                ],
+                              )
+                            : null,
                       ),
                       SizedBox(height: 30),
                       Text(

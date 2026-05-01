@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mini_group_11/src/core/consts/colors/app_colors.dart';
-import 'package:mini_group_11/src/core/utils/check_device_extension.dart';
 
-class PAContainer extends StatelessWidget {
-  const PAContainer({super.key, required this.svg, required this.text, required this.onTap});
+class PaContainerTab extends StatelessWidget {
+  const PaContainerTab({super.key, required this.svg, required this.text, required this.onTap});
 
   final String svg;
   final String text;
@@ -16,8 +15,8 @@ class PAContainer extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        width: context.checkDevice() == DeviceType.mobile ? 158 : 229,
-        height: 133,
+        width: 111,
+        height: 110,
         decoration: BoxDecoration(
           color: AppColors.white,
           borderRadius: BorderRadius.circular(5.0),
