@@ -12,3 +12,14 @@ class AuthSignInUsercase extends UseCase<void, Map<String, dynamic>> {
     return authRepository.signIn(userInfo: params);
   }
 }
+
+class CheckAuthStatusUsecase extends UseCase<bool, NoParams> {
+  final AuthRepository authRepository;
+
+  CheckAuthStatusUsecase({required this.authRepository});
+
+  @override
+  Future<Either<Failure, bool>> call(NoParams params) {
+    return authRepository.isLoggedIn();
+  }
+}

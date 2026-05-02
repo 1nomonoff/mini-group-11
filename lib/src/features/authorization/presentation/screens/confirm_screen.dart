@@ -3,6 +3,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mini_group_11/src/core/consts/colors/app_colors.dart';
 
+import '../../../../core/widgets/blue_button_widget.dart';
+import '../../../../core/widgets/search_widget.dart';
+
 class ConfirmScreen extends StatelessWidget {
  const ConfirmScreen({super.key});
 
@@ -26,6 +29,19 @@ class ConfirmScreen extends StatelessWidget {
                 ],
               ),             
               SizedBox(height: 20),
+               Row(
+                  children: [
+                    Expanded(
+                      child: BlueButtonWidget(
+                        icon: SvgPicture.asset('assets/icons/menu.svg'),
+                        title: 'Каталог',
+                        onTap: () {},
+                      ),
+                    ),
+                    const SizedBox(width: 12), // расстояние между кнопками
+                    Expanded(child: SearchWidget()),
+                  ],
+                ),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(

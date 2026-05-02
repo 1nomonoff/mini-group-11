@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mini_group_11/src/core/consts/theme/app_theme.dart';
@@ -15,6 +13,7 @@ class MyApp extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
+
     return MultiBlocProvider(
      providers: [
       BlocProvider(
@@ -32,7 +31,7 @@ class MyApp extends StatelessWidget {
         theme: AppTheme.light,
         debugShowCheckedModeBanner: false,
         onGenerateRoute: AppRouter.onGenerateRoute,
-        initialRoute: '/privacy',
+        initialRoute: '/order',
         // home: const MyHomePage(title: 'Flutter Demo Home Page'),
       ),
     );

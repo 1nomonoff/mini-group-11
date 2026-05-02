@@ -5,4 +5,6 @@ abstract class AuthDataSource {
   Future<Either<Failure, void>> signIn({
     required Map<String, dynamic> userInfo,
   });
+
+  Future<Object?> isLoggedIn() async {}
 }

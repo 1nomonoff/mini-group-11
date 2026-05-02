@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mini_group_11/src/core/widgets/blue_button_widget.dart';
+import 'package:mini_group_11/src/core/widgets/search_widget.dart';
 
 class AuthorizationScreen extends StatefulWidget {
  const AuthorizationScreen({super.key});
@@ -28,7 +30,6 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
                     width: 159,
                     height: 40,
                   ),
-
                   SvgPicture.asset('assets/icons/profile.svg'),
                   SvgPicture.asset('assets/icons/trading.svg'),
                   SvgPicture.asset('assets/icons/like.svg'),
@@ -36,6 +37,19 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
                 ],
               ),
               SizedBox(height: 32),
+               Row(
+                  children: [
+                    Expanded(
+                      child: BlueButtonWidget(
+                        icon: SvgPicture.asset('assets/icons/menu.svg'),
+                        title: 'Каталог',
+                        onTap: () {},
+                      ),
+                    ),
+                    const SizedBox(width: 12), // расстояние между кнопками
+                    Expanded(child: SearchWidget()),
+                  ],
+                ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [

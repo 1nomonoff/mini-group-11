@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mini_group_11/src/core/consts/colors/app_colors.dart';
+import 'package:mini_group_11/src/core/widgets/simple_textfield_widget.dart';
 
 class PurchaseDialog extends StatefulWidget {
   const PurchaseDialog({super.key});
@@ -48,49 +49,15 @@ class _PurchaseDialogState extends State<PurchaseDialog> {
               const SizedBox(height: 20),
               Text('Ваше имя *'),
               const SizedBox(height: 6),
-              TextField(
-                decoration: InputDecoration(
-                  hintText: 'Как к вам обращаться?',
-                  hintStyle: GoogleFonts.poppins(color: Colors.grey),
-                  filled: true,
-                  fillColor: AppColors.white,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide.none,
-                  ),
-                ),
-              ),
+              SimpleTextfieldWidget(title: 'Как к вам обращаться?'),
               const SizedBox(height: 16),
               Text('Email адрес *'),
               const SizedBox(height: 6),
-              TextField(
-                decoration: InputDecoration(
-                  hintText: 'Ваш email',
-                  hintStyle: GoogleFonts.poppins(color: Colors.grey),
-                  filled: true,
-                  fillColor: AppColors.white,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide.none,
-                  ),
-                ),
-              ),
+              SimpleTextfieldWidget(title: 'Ваш email'),
               const SizedBox(height: 16),
               Text('Номер телефона *'),
               const SizedBox(height: 6),
-              TextField(
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  hintText: '+7 (   )  -   -',
-                  hintStyle: GoogleFonts.poppins(color: Colors.grey),
-                  filled: true,
-                  fillColor: AppColors.white,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide.none,
-                  ),
-                ),
-              ),
+              SimpleTextfieldWidget(title:  '+7 (   )  -   -',),
               const SizedBox(height: 16),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -118,7 +85,9 @@ class _PurchaseDialogState extends State<PurchaseDialog> {
                               color: Colors.blue,
                               decoration: TextDecoration.underline,
                             ),
-                            recognizer: TapGestureRecognizer()..onTap = () {},
+                            recognizer: TapGestureRecognizer()..onTap = () {
+                              Navigator.pushNamed(context, '/privacy');
+                            },
                           ),
                         ],
                       ),

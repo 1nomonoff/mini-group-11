@@ -8,4 +8,5 @@ abstract class AuthRepository {
   Future<Either<Failure, void>> signIn({
     required Map<String, dynamic> userInfo,
   });
+  Future<Either<Failure, bool>> isLoggedIn();
 }

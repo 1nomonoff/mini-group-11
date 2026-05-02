@@ -1,9 +1,9 @@
 // dart format width=80
 
 /// GENERATED CODE - DO NOT MODIFY BY HAND
-/// *************************************************
+/// *****************************************************
 ///  FlutterGen
-/// *************************************************
+/// *****************************************************
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -22,6 +22,9 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/call.svg
   String get call => 'assets/icons/call.svg';
+
+  /// File path: assets/icons/cancel.svg
+  String get cancel => 'assets/icons/cancel.svg';
 
   /// File path: assets/icons/cart.svg
   String get cart => 'assets/icons/cart.svg';
@@ -56,6 +59,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/eye.svg
   String get eye => 'assets/icons/eye.svg';
 
+  /// File path: assets/icons/eye1.svg
+  String get eye1 => 'assets/icons/eye1.svg';
+
   /// File path: assets/icons/left.svg
   String get left => 'assets/icons/left.svg';
 
@@ -74,11 +80,11 @@ class $AssetsIconsGen {
   /// File path: assets/icons/logout.svg
   String get logout => 'assets/icons/logout.svg';
 
-  /// File path: assets/icons/menu1.svg
-  String get menu1 => 'assets/icons/menu1.svg';
-
   /// File path: assets/icons/menu.svg
   String get menu => 'assets/icons/menu.svg';
+
+  /// File path: assets/icons/menu1.svg
+  String get menu1 => 'assets/icons/menu1.svg';
 
   /// File path: assets/icons/notification3.svg
   String get notification3 => 'assets/icons/notification3.svg';
@@ -113,6 +119,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/share1.svg
   String get share1 => 'assets/icons/share1.svg';
 
+  /// File path: assets/icons/share2.svg
+  String get share2 => 'assets/icons/share2.svg';
+
   /// File path: assets/icons/tallleft.svg
   String get tallleft => 'assets/icons/tallleft.svg';
 
@@ -130,6 +139,7 @@ class $AssetsIconsGen {
     addprofile,
     attention,
     call,
+    cancel,
     cart,
     cart1,
     categorymenu,
@@ -141,6 +151,7 @@ class $AssetsIconsGen {
     editprofile,
     email,
     eye,
+    eye1,
     left,
     like,
     like1,
@@ -160,6 +171,7 @@ class $AssetsIconsGen {
     search,
     share,
     share1,
+    share2,
     tallleft,
     tallright,
     trading,
@@ -172,30 +184,6 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/image1.png
   AssetGenImage get image1 => const AssetGenImage('assets/images/image1.png');
-
-  /// File path: assets/images/image2.png
-  AssetGenImage get image2 => const AssetGenImage('assets/images/image2.png');
-
-  /// File path: assets/images/image3.png
-  AssetGenImage get image3 => const AssetGenImage('assets/images/image3.png');
-
-  /// File path: assets/images/image4.png
-  AssetGenImage get image4 => const AssetGenImage('assets/images/image4.png');
-
-  /// File path: assets/images/image5.png
-  AssetGenImage get image5 => const AssetGenImage('assets/images/image5.png');
-
-  /// File path: assets/images/image6.png
-  AssetGenImage get image6 => const AssetGenImage('assets/images/image6.png');
-
-  /// File path: assets/images/image7.png
-  AssetGenImage get image7 => const AssetGenImage('assets/images/image7.png');
-
-  /// File path: assets/images/image8.png
-  AssetGenImage get image8 => const AssetGenImage('assets/images/image8.png');
-
-  /// File path: assets/images/image9.png
-  AssetGenImage get image9 => const AssetGenImage('assets/images/image9.png');
 
   /// File path: assets/images/image10.png
   AssetGenImage get image10 => const AssetGenImage('assets/images/image10.png');
@@ -227,6 +215,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/image19.png
   AssetGenImage get image19 => const AssetGenImage('assets/images/image19.png');
 
+  /// File path: assets/images/image2.png
+  AssetGenImage get image2 => const AssetGenImage('assets/images/image2.png');
+
   /// File path: assets/images/image20.png
   AssetGenImage get image20 => const AssetGenImage('assets/images/image20.png');
 
@@ -256,6 +247,9 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/image29.png
   AssetGenImage get image29 => const AssetGenImage('assets/images/image29.png');
+
+  /// File path: assets/images/image3.png
+  AssetGenImage get image3 => const AssetGenImage('assets/images/image3.png');
 
   /// File path: assets/images/image30.png
   AssetGenImage get image30 => const AssetGenImage('assets/images/image30.png');
@@ -287,6 +281,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/image39.png
   AssetGenImage get image39 => const AssetGenImage('assets/images/image39.png');
 
+  /// File path: assets/images/image4.png
+  AssetGenImage get image4 => const AssetGenImage('assets/images/image4.png');
+
   /// File path: assets/images/image40.png
   AssetGenImage get image40 => const AssetGenImage('assets/images/image40.png');
 
@@ -316,6 +313,9 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/image49.png
   AssetGenImage get image49 => const AssetGenImage('assets/images/image49.png');
+
+  /// File path: assets/images/image5.png
+  AssetGenImage get image5 => const AssetGenImage('assets/images/image5.png');
 
   /// File path: assets/images/image50.png
   AssetGenImage get image50 => const AssetGenImage('assets/images/image50.png');
@@ -347,6 +347,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/image59.png
   AssetGenImage get image59 => const AssetGenImage('assets/images/image59.png');
 
+  /// File path: assets/images/image6.png
+  AssetGenImage get image6 => const AssetGenImage('assets/images/image6.png');
+
   /// File path: assets/images/image60.png
   AssetGenImage get image60 => const AssetGenImage('assets/images/image60.png');
 
@@ -377,6 +380,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/image69.png
   AssetGenImage get image69 => const AssetGenImage('assets/images/image69.png');
 
+  /// File path: assets/images/image7.png
+  AssetGenImage get image7 => const AssetGenImage('assets/images/image7.png');
+
   /// File path: assets/images/image70.png
   AssetGenImage get image70 => const AssetGenImage('assets/images/image70.png');
 
@@ -395,11 +401,21 @@ class $AssetsImagesGen {
   /// File path: assets/images/image75.png
   AssetGenImage get image75 => const AssetGenImage('assets/images/image75.png');
 
+  /// File path: assets/images/image8.png
+  AssetGenImage get image8 => const AssetGenImage('assets/images/image8.png');
+
+  /// File path: assets/images/image9.png
+  AssetGenImage get image9 => const AssetGenImage('assets/images/image9.png');
+
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
   /// File path: assets/images/mir.png
   AssetGenImage get mir => const AssetGenImage('assets/images/mir.png');
+
+  /// File path: assets/images/readycode_logo.png
+  AssetGenImage get readycodeLogo =>
+      const AssetGenImage('assets/images/readycode_logo.png');
 
   /// File path: assets/images/sad.png
   AssetGenImage get sad => const AssetGenImage('assets/images/sad.png');
@@ -416,14 +432,6 @@ class $AssetsImagesGen {
   /// List of all assets
   List<AssetGenImage> get values => [
     image1,
-    image2,
-    image3,
-    image4,
-    image5,
-    image6,
-    image7,
-    image8,
-    image9,
     image10,
     image11,
     image12,
@@ -434,6 +442,7 @@ class $AssetsImagesGen {
     image17,
     image18,
     image19,
+    image2,
     image20,
     image21,
     image22,
@@ -444,6 +453,7 @@ class $AssetsImagesGen {
     image27,
     image28,
     image29,
+    image3,
     image30,
     image31,
     image32,
@@ -454,6 +464,7 @@ class $AssetsImagesGen {
     image37,
     image38,
     image39,
+    image4,
     image40,
     image41,
     image42,
@@ -464,6 +475,7 @@ class $AssetsImagesGen {
     image47,
     image48,
     image49,
+    image5,
     image50,
     image51,
     image52,
@@ -474,6 +486,7 @@ class $AssetsImagesGen {
     image57,
     image58,
     image59,
+    image6,
     image60,
     image61,
     image62,
@@ -484,14 +497,18 @@ class $AssetsImagesGen {
     image67,
     image68,
     image69,
+    image7,
     image70,
     image71,
     image72,
     image73,
     image74,
     image75,
+    image8,
+    image9,
     logo,
     mir,
+    readycodeLogo,
     sad,
     tinkoff,
     visa,

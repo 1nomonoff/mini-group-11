@@ -16,10 +16,20 @@ class AuthRepoImpl extends AuthRepository {
     try {
       final result = await authDataSource.signIn(userInfo: userInfo);
       if (result.isRight) {
-        return Right('');
+        return Right(null);
       } else {
         throw Exception();
       }
+    } catch (e) {
+      return Left(Failure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, bool>> isLoggedIn() async {
+    try {
+      final result = await authDataSource.isLoggedIn();
+      return Right(result != null);
     } catch (e) {
       return Left(Failure());
     }

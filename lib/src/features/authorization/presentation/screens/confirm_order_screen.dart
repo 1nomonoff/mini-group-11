@@ -3,6 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mini_group_11/src/core/consts/colors/app_colors.dart';
+import 'package:mini_group_11/src/core/usecase/usecase.dart';
+import 'package:mini_group_11/src/core/widgets/blue_button_widget.dart';
+import 'package:mini_group_11/src/core/widgets/main_button_widget.dart';
+import 'package:mini_group_11/src/core/widgets/password_field_widget.dart';
+import 'package:mini_group_11/src/core/widgets/search_widget.dart';
+import 'package:mini_group_11/src/core/widgets/simple_textfield_widget.dart';
+import 'package:mini_group_11/src/features/authorization/data/repository/auth_repo_impl.dart';
+import 'package:mini_group_11/src/features/authorization/domain/usecase/auth_sign_in_usecase.dart';
+
+import '../../data/source/auth_data_source_impl.dart';
 
 class ConfirmOrderScreen extends StatefulWidget {
   const ConfirmOrderScreen({super.key});
@@ -12,6 +22,7 @@ class ConfirmOrderScreen extends StatefulWidget {
 }
 
 class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
+  bool isLoggedIn = false;
   bool isOn = false;
   bool isOn2 = false;
   bool isOn3 = false;
@@ -21,6 +32,28 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
   bool isOn7 = false;
   bool isOn8 = false;
   bool isOn9 = false;
+  @override
+void initState() {
+  super.initState();
+  checkUserStatus();
+}
+
+Future<void> checkUserStatus() async {
+  final result = await CheckAuthStatusUsecase(
+    authRepository: AuthRepoImpl(
+      authDataSource: AuthDataSourceImpl(),
+    ),
+  ).call(NoParams());
+
+  result.either(
+    (failure) {},
+    (status) {
+      setState(() {
+        isLoggedIn = status;
+      });
+    },
+  );
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +72,15 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                   SvgPicture.asset('assets/icons/cart1.svg'),
                 ],
               ),
+               Row(
+                  children: [
+                    Expanded(
+                      child: Mainbutton(),
+                    ),
+                    const SizedBox(width: 12), // расстояние между кнопками
+                    Expanded(child: SearchWidget()),
+                  ],
+                ),
               SizedBox(height: 20),
               Align(
                 alignment: Alignment.centerLeft,
@@ -49,6 +91,48 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                 ),
               ),
               SizedBox(height: 32),
+              if (!isOn)
+  Container(
+    padding: EdgeInsets.symmetric(horizontal: 15, vertical: 14),
+    margin: EdgeInsets.only(bottom: 20),
+    decoration: BoxDecoration(
+      border: Border.all(color: Colors.grey[300]!),
+      borderRadius: BorderRadius.circular(8),
+    ),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          'Уже есть аккаунт?',
+          style: GoogleFonts.poppins(
+            fontSize: 16,
+            color: AppColors.black,
+          ),
+        ),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: AppColors.lightgrey,
+            elevation: 0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+          ),
+          onPressed: () {
+            // Здесь переход на экран входа
+            Navigator.pushNamed(context, '/login');
+          },
+          child: Text(
+            'Войти',
+            style: GoogleFonts.poppins(
+              color: AppColors.blue,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ),
+      ],
+    ),
+  ),
+
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
                 decoration: BoxDecoration(
@@ -335,7 +419,9 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                                   decoration: TextDecoration.underline,
                                 ),
                                 recognizer: TapGestureRecognizer()
-                                  ..onTap = () {},
+                                  ..onTap = () {
+                                    Navigator.pushNamed(context, '/privacy');
+                                  },
                               ),
                             ],
                           ),
@@ -366,7 +452,7 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                           child: RichText(
                             text: TextSpan(
                               text:
-                                  'Оплата при получении\nПодробнее об условиях оплаты при получении',
+                                  'Покупай со Сбером (оформление покупки в кредит)',
                               style: TextStyle(
                                 fontSize: 13,
                                 color: Colors.black,
@@ -374,13 +460,15 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                               children: [
                                 TextSpan(
                                   text:
-                                      ' Подробнее об условиях оплаты при получении',
+                                      ' Условия предоставления',
                                   style: GoogleFonts.poppins(
                                     color: AppColors.blue,
                                     decoration: TextDecoration.underline,
                                   ),
                                   recognizer: TapGestureRecognizer()
-                                    ..onTap = () {},
+                                    ..onTap = () {
+                                      Navigator.pushNamed(context, '/privacy');
+                                    },
                                 ),
                               ],
                             ),
@@ -421,90 +509,23 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                     SizedBox(height: 20),
                     Text('Ваше имя *:', style: TextStyle(fontSize: 14)),
                     SizedBox(height: 6),
-                    TextField(
-                      decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: AppColors.grey),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: AppColors.grey),
-                          borderRadius: BorderRadius.circular(8),
-                        ), // при фокусе
-                        hintStyle: TextStyle(color: AppColors.grey),
-                        hintText: 'Как вас зовут',
-                      ),
-                    ),
+                    SimpleTextfieldWidget(title: 'Как вас зовут'),
                     SizedBox(height: 14),
                     Text('Фамилия *:', style: TextStyle(fontSize: 14)),
                     SizedBox(height: 6),
-                    TextField(
-                      decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: AppColors.grey),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: AppColors.grey),
-                          borderRadius: BorderRadius.circular(8),
-                        ), // при фокусе
-                        hintStyle: TextStyle(color: AppColors.grey),
-                        hintText: 'Введите вашу фамилию',
-                      ),
-                    ),
+                    SimpleTextfieldWidget(title: 'Введите вашу фамилию'),
                     SizedBox(height: 14),
                     Text('Название компании:', style: TextStyle(fontSize: 14)),
                     SizedBox(height: 6),
-                    TextField(
-                      decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: AppColors.grey),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: AppColors.grey),
-                          borderRadius: BorderRadius.circular(8),
-                        ), // при фокусе
-                        hintStyle: TextStyle(color: AppColors.grey),
-                        hintText: 'Введите название вашей компании',
-                      ),
-                    ),
+                    SimpleTextfieldWidget(title: 'Введите название компании'),
                     SizedBox(height: 14),
                     Text('Email *:', style: TextStyle(fontSize: 14)),
                     SizedBox(height: 6),
-                    TextField(
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: AppColors.grey),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: AppColors.grey),
-                          borderRadius: BorderRadius.circular(8),
-                        ), // при фокусе
-                        hintStyle: TextStyle(color: AppColors.grey),
-                        hintText: 'Введите ваш email адрес',
-                      ),
-                    ),
+                    SimpleTextfieldWidget(title: 'Введите ваш email адрес'),
                     SizedBox(height: 14),
                     Text('Номер телефона *:', style: TextStyle(fontSize: 14)),
                     SizedBox(height: 6),
-                    TextField(
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: AppColors.grey),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: AppColors.grey),
-                          borderRadius: BorderRadius.circular(8),
-                        ), // при фокусе
-                        hintStyle: TextStyle(color: AppColors.grey),
-                        hintText: '+7 (___) ___-__-__',
-                      ),
-                    ),
+                    SimpleTextfieldWidget(title: '+7 (___) ___-__-__'),
                     SizedBox(height: 12),
                     Row(
                       children: [
@@ -697,11 +718,11 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                   Text('0 ₽', style: TextStyle(color: AppColors.blue)),
                 ],
               ),
-              Divider(height: 20),
+              SizedBox(height: 6),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Итого', style: TextStyle(fontWeight: FontWeight.w600)),
+                  Text('Итого', style: GoogleFonts.poppins()),
                   Text(
                     '43 829 ₽',
                     style: TextStyle(
@@ -728,7 +749,7 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                   Expanded(
                     child: Text(
                       'Согласен с обработкой персональных данных в соответствии с политикой конфиденциальности',
-                      style: TextStyle(fontSize: 12),
+                      style: GoogleFonts.poppins(fontSize: 12,color: AppColors.grey),
                     ),
                   ),
                 ],
