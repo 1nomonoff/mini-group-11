@@ -26,7 +26,7 @@ class SearchWidget extends StatelessWidget {
             padding: const EdgeInsets.all(2),
             child: Container(
               height: 42,
-              width: 144,
+              width: 103,
               decoration: BoxDecoration(
                 color: AppColors.white,
                 borderRadius: BorderRadius.circular(8),

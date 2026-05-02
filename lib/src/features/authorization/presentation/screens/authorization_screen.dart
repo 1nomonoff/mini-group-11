@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mini_group_11/src/core/widgets/blue_button_widget.dart';
+import 'package:mini_group_11/src/core/widgets/main_button_widget.dart';
+import 'package:mini_group_11/src/core/widgets/password_field_widget.dart';
 import 'package:mini_group_11/src/core/widgets/search_widget.dart';
+import 'package:mini_group_11/src/core/widgets/simple_textfield_widget.dart';
 
 class AuthorizationScreen extends StatefulWidget {
  const AuthorizationScreen({super.key});
@@ -40,11 +43,7 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
                Row(
                   children: [
                     Expanded(
-                      child: BlueButtonWidget(
-                        icon: SvgPicture.asset('assets/icons/menu.svg'),
-                        title: 'Каталог',
-                        onTap: () {},
-                      ),
+                      child: Mainbutton()
                     ),
                     const SizedBox(width: 12), // расстояние между кнопками
                     Expanded(child: SearchWidget()),
@@ -75,24 +74,7 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
                 ],
               ),
               SizedBox(height: 8),
-              TextField(
-                decoration: InputDecoration(
-                  hintText: 'Введите данные для авторизации',
-                  hintStyle: GoogleFonts.poppins(color: Colors.grey[400]),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Colors.grey[300]!),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Colors.grey[300]!),
-                  ),
-                  contentPadding: EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 14,
-                  ),
-                ),
-              ),
+              SimpleTextfieldWidget(title: 'Введите данные для авторизации'),
               SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -104,36 +86,7 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
                 ],
               ),
               SizedBox(height: 8),
-              TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  hintText: 'Введите пароль',
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        isVisible = !isVisible;
-                      });
-                    },
-                    icon: Icon(
-                      isVisible ? Icons.visibility : Icons.visibility_off,
-                      color: Colors.grey[400],
-                    ),
-                  ),
-                  hintStyle: TextStyle(color: Colors.grey[400]),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Colors.grey[300]!),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Colors.grey[300]!),
-                  ),
-                  contentPadding: EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 14,
-                  ),
-                ),
-              ),
+              PasswordFieldWidget(),
               SizedBox(height: 12),
               ElevatedButton(
                 onPressed: () {
