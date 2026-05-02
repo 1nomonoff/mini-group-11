@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mini_group_11/src/core/consts/colors/app_colors.dart';
+import 'package:mini_group_11/src/core/utils/check_device_extension.dart';
 import 'package:mini_group_11/src/core/utils/text_style_extension.dart';
 import 'package:mini_group_11/src/core/widgets/company_info_container.dart';
 import 'package:mini_group_11/src/core/widgets/custom_app_bar_mobile.dart';
+import 'package:mini_group_11/src/core/widgets/custom_app_bar_tab.dart';
 import 'package:mini_group_11/src/core/widgets/custom_header_mobile.dart';
+import 'package:mini_group_11/src/core/widgets/custom_header_tab.dart';
 import 'package:mini_group_11/src/features/privacy_policy/presentation/widgets/privacy_policy_text.dart';
 
 class PrivacyPolicyPage extends StatelessWidget {
@@ -13,14 +16,22 @@ class PrivacyPolicyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBarMobile(),
+      appBar: context.checkDevice() == DeviceType.mobile
+          ? CustomAppBarMobile()
+          : CustomAppBarTab(),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(
             children: [
-              CustomHeaderMobile(),
+              context.checkDevice() == DeviceType.mobile
+                  ? CustomHeaderMobile()
+                  : CustomHeaderTab(),
               Padding(
-                padding: const EdgeInsets.only(left: 15, right: 15, top: 12),
+                padding: EdgeInsets.only(
+                  left: context.checkDevice() == DeviceType.mobile ? 15 : 25,
+                  right: context.checkDevice() == DeviceType.mobile ? 15 : 25,
+                  top: 12,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -101,4 +112,3 @@ class PrivacyPolicyPage extends StatelessWidget {
     );
   }
 }
-

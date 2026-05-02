@@ -50,7 +50,11 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                   ? CustomHeaderMobile()
                   : CustomHeaderTab(),
               Padding(
-                padding: const EdgeInsets.only(left: 25, right: 25, top: 12),
+                padding: EdgeInsets.only(
+                  left: context.checkDevice() == DeviceType.mobile ? 15 : 25,
+                  right: context.checkDevice() == DeviceType.mobile ? 15 : 25,
+                  top: 12,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -141,8 +145,8 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                         ),
                       )
                     : Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 25),
-                      child: Row(
+                        padding: const EdgeInsets.symmetric(horizontal: 25),
+                        child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             InkWell(
@@ -203,10 +207,10 @@ class _PersonalAccountPageState extends State<PersonalAccountPage> {
                             ),
                           ],
                         ),
-                    )
+                      )
               else ...[
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  padding: EdgeInsets.symmetric(horizontal: context.checkDevice() == DeviceType.mobile ? 15 : 25),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
